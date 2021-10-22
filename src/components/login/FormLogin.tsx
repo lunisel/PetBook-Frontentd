@@ -1,11 +1,21 @@
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { FaUserAlt, FaLock } from "react-icons/fa";
+import { withRouter, RouteComponentProps } from "react-router";
+import { logInInt } from "../../utils/interfaces";
 
-const FormLogin = () => {
+const FormLogin = ({ history }: RouteComponentProps) => {
+  const [login, setLogin] = useState<logInInt | null>(null);
+
   return (
-    <Form className="form-container">
+    <Form className="form-container" onSubmit={() => history.push("/")}>
       <div className="input-container">
-        <Form.Control type="text" placeholder="Email" className="input-text" />
+        <Form.Control
+          type="text"
+          placeholder="Email"
+          className="input-text"
+          value={login?.email}
+        />
         <FaUserAlt className="input-icon" />
       </div>
 
@@ -14,6 +24,7 @@ const FormLogin = () => {
           type="password"
           placeholder="Password"
           className="input-text"
+          value={login?.password}
         />
         <FaLock className="input-icon" />
       </div>
@@ -32,4 +43,4 @@ const FormLogin = () => {
   );
 };
 
-export default FormLogin;
+export default withRouter(FormLogin);

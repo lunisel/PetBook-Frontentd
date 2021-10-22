@@ -16,7 +16,10 @@ const Login = ({ history }: RouteComponentProps) => {
           <h1 className="login-title">Log In</h1>
           <FormLogin />
           <span className="link-to-registration">
-            New here? <span className="orange">Create an account</span>
+            New here?{" "}
+            <span className="orange" onClick={() => history.push("/signup")}>
+              Create an account
+            </span>
           </span>
         </div>
       </div>

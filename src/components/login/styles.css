@@ -134,6 +134,7 @@ input.input-text {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .link-to-registration {
@@ -145,6 +146,11 @@ input.input-text {
 
 .orange {
   color: #f7a072;
+  cursor: pointer;
+}
+
+.orange:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 1500px) {
