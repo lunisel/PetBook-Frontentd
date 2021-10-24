@@ -88,11 +88,11 @@ input.input-text-signup {
   padding-left: 1rem;
 }
 
-input.input-text-signup.owner-name{
+input.input-text-signup.owner-name {
   width: 45%;
 }
 
-.input-container.owner-name{
+.input-container.owner-name {
   justify-content: space-between;
 }
 
@@ -176,9 +176,18 @@ input.input-text-signup.owner-name{
     font-size: 2.5rem;
   }
 
-  .login-title {
-    font-size: 3rem;
-    margin-bottom: 2rem;
+  .signup-title {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+  }
+  .input-container {
+    margin-bottom: 0.8rem;
+  }
+  .submit-btn {
+    margin-top: 0.5rem;
+  }
+  .input-text-signup.owner-name {
+    width: 44% !important;
   }
 }
 

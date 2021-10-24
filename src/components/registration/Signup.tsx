@@ -1,7 +1,7 @@
 import { RouteComponentProps } from "react-router";
 import { FaPaw } from "react-icons/fa";
 import FormSignup from "./FormSignup";
-import "./styles.css";
+import "./signup.css";
 
 const Signup = ({ history }: RouteComponentProps) => {
   return (
