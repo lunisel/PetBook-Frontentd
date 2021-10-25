@@ -188,6 +188,13 @@ input.input-text-signup.owner-name {
   }
 }
 
+.fade.alert.alert-danger.show{
+  text-align: center;
+  padding: 0.5rem;
+  height: 2.5rem;
+  width: 80%;
+}
+
 @media screen and (max-width: 1000px) {
   .content-container {
     width: 85%;
