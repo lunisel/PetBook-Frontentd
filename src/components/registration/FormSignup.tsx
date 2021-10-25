@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { Alert, Button, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router";
-import { reduxStateInt, signUpInt, userInt } from "../../utils/interfaces";
-import { handleSubmit } from "./signupLogic";
+import { signUpInt } from "../../utils/interfaces";
+import { handleSubmit, handleOnChange } from "./signupLogic";
 import { addCurrentUser } from "../../redux/actions/user";
 
 const FormSignup = ({ history }: RouteComponentProps) => {
@@ -18,30 +18,9 @@ const FormSignup = ({ history }: RouteComponentProps) => {
     username: "",
   });
 
-  const user: userInt | null = useSelector(
-    (state: reduxStateInt) => state.user.currentUser
-  );
-  const dispatch = useDispatch();
+  const [validated, setValidation] = useState<boolean>(false);
 
-  const handleOnChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    key: string
-  ) => {
-    if (key === "name" || key === "surname") {
-      setSignup({
-        ...signup,
-        myOwner: {
-          ...signup.myOwner,
-          [key]: e.target.value,
-        },
-      });
-    } else {
-      setSignup({
-        ...signup,
-        [key]: e.target.value,
-      });
-    }
-  };
+  const dispatch = useDispatch();
 
   return (
     <Form
@@ -49,12 +28,17 @@ const FormSignup = ({ history }: RouteComponentProps) => {
       onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const data = await handleSubmit(signup);
-        dispatch(addCurrentUser(data.newUser));
-        if (user !== null) {
-          history.push("/");
+        if (data) {
+          dispatch(addCurrentUser(data.newUser));
+          setTimeout(() => {
+            history.push("/");
+          }, 2000);
+        } else {
+          setValidation(true);
         }
       }}
     >
+      {validated ? <Alert variant="danger">Fill all fields !</Alert> : ""}
       <div className="input-container owner-name">
         <Form.Control
           type="text"
@@ -62,7 +46,7 @@ const FormSignup = ({ history }: RouteComponentProps) => {
           className="input-text-signup owner-name"
           value={signup?.myOwner.name}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(e, "name")
+            handleOnChange(e, "name", signup, setSignup)
           }
         />
         <Form.Control
@@ -71,7 +55,7 @@ const FormSignup = ({ history }: RouteComponentProps) => {
           className="input-text-signup owner-name"
           value={signup?.myOwner.surname}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(e, "surname")
+            handleOnChange(e, "surname", signup, setSignup)
           }
         />
       </div>
@@ -83,7 +67,7 @@ const FormSignup = ({ history }: RouteComponentProps) => {
           className="input-text-signup"
           value={signup?.petName}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(e, "petName")
+            handleOnChange(e, "petName", signup, setSignup)
           }
         />
       </div>
@@ -95,7 +79,7 @@ const FormSignup = ({ history }: RouteComponentProps) => {
           className="input-text-signup"
           value={signup?.username}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(e, "username")
+            handleOnChange(e, "username", signup, setSignup)
           }
         />
       </div>
@@ -107,7 +91,7 @@ const FormSignup = ({ history }: RouteComponentProps) => {
           className="input-text-signup"
           value={signup?.email}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(e, "email")
+            handleOnChange(e, "email", signup, setSignup)
           }
         />
       </div>
@@ -119,7 +103,7 @@ const FormSignup = ({ history }: RouteComponentProps) => {
           className="input-text-signup"
           value={signup?.password}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleOnChange(e, "password")
+            handleOnChange(e, "password", signup, setSignup)
           }
         />
       </div>

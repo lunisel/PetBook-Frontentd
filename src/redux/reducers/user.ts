@@ -12,6 +12,11 @@ const userReducer = (
         ...state,
         currentUser: action.payload,
       };
+      case "DISCONNECT_USER":
+        return{
+          ...state,
+          currentUser: null
+        }
     default:
       return state;
   }

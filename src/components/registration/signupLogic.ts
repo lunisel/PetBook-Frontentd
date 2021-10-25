@@ -19,3 +19,25 @@ export const handleSubmit = async (user: signUpInt) => {
     console.log(err);
   }
 };
+
+export const handleOnChange = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  key: string,
+  signup: signUpInt,
+  setSignup: any
+) => {
+  if (key === "name" || key === "surname") {
+    setSignup({
+      ...signup,
+      myOwner: {
+        ...signup.myOwner,
+        [key]: e.target.value,
+      },
+    });
+  } else {
+    setSignup({
+      ...signup,
+      [key]: e.target.value,
+    });
+  }
+};

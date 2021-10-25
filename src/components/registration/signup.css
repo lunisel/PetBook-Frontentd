@@ -89,7 +89,7 @@ input.input-text-signup {
 }
 
 input.input-text-signup.owner-name {
-  width: 45%;
+  width: 49%;
 }
 
 .input-container.owner-name {
@@ -132,7 +132,7 @@ input.input-text-signup.owner-name {
   text-decoration: underline;
 }
 
-.submit-btn {
+.submit-btn.btn.btn-primary {
   margin-top: 1.5rem;
   padding: 0.8rem 3.5rem;
   border-radius: 50px;
@@ -183,11 +183,8 @@ input.input-text-signup.owner-name {
   .input-container {
     margin-bottom: 0.8rem;
   }
-  .submit-btn {
+  .submit-btn.btn.btn-primary {
     margin-top: 0.5rem;
-  }
-  .input-text-signup.owner-name {
-    width: 44% !important;
   }
 }
 

@@ -11,6 +11,7 @@ import Home from "./components/home/Home";
 import "./App.css";
 import { useSelector } from "react-redux";
 import { reduxStateInt, userInt } from "./utils/interfaces";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const user: userInt | null = useSelector(
