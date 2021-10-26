@@ -38,7 +38,7 @@ const FormSignup = ({ history }: RouteComponentProps) => {
         }
       }}
     >
-      {validated ? <Alert variant="danger">Fill all fields !</Alert> : ""}
+      {validated ? <Alert variant="danger">Something went wrong, try again!</Alert> : ""}
       <div className="input-container owner-name">
         <Form.Control
           type="text"
