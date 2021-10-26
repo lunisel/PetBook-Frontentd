@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Button, Form } from "react-bootstrap";
+import { Alert, Button, Form, Spinner } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router";
 import { signUpInt } from "../../utils/interfaces";
@@ -20,6 +20,8 @@ const FormSignup = ({ history }: RouteComponentProps) => {
 
   const [validated, setValidation] = useState<boolean>(false);
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const dispatch = useDispatch();
 
   return (
@@ -27,18 +29,25 @@ const FormSignup = ({ history }: RouteComponentProps) => {
       className="form-container"
       onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true);
         const data = await handleSubmit(signup);
         if (data) {
           dispatch(addCurrentUser(data.newUser));
           setTimeout(() => {
+            setLoading(false);
             history.push("/");
           }, 2000);
         } else {
+          setLoading(false);
           setValidation(true);
         }
       }}
     >
-      {validated ? <Alert variant="danger">Something went wrong, try again!</Alert> : ""}
+      {validated ? (
+        <Alert variant="danger">Something went wrong, try again!</Alert>
+      ) : (
+        ""
+      )}
       <div className="input-container owner-name">
         <Form.Control
           type="text"
@@ -109,7 +118,7 @@ const FormSignup = ({ history }: RouteComponentProps) => {
       </div>
 
       <Button className="submit-btn" type="submit">
-        Sign Up
+        {loading ? <Spinner animation="border" variant="light" /> : "Sign Up"}
       </Button>
     </Form>
   );

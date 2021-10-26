@@ -11,6 +11,7 @@ import Home from "./components/home/Home";
 import Feed from "./components/feed/Feed"
 import MePage from "./components/profile/MeProfile"
 import Notes from "./components/notes/Notes"
+import Messages from "./components/messages/Messages"
 import "./App.css";
 import { useSelector } from "react-redux";
 import { reduxStateInt, userInt } from "./utils/interfaces";
@@ -84,6 +85,19 @@ function App() {
               path="/notes"
               render={(routerProps: RouteComponentProps) => (
                 <Notes {...routerProps} />
+              )}
+            />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route exact path="/messages">
+          {user ? (
+            <Route
+              exact
+              path="/messages"
+              render={(routerProps: RouteComponentProps) => (
+                <Messages {...routerProps} />
               )}
             />
           ) : (

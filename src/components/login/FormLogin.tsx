@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, Button, Form } from "react-bootstrap";
+import { Alert, Button, Form, Spinner } from "react-bootstrap";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router";
@@ -16,6 +16,8 @@ const FormLogin = ({ history }: RouteComponentProps) => {
 
   const [validated, setValidation] = useState<boolean>(false);
 
+  const [loading, setLoading] = useState<boolean>(false)
+
   const dispatch = useDispatch();
 
   return (
@@ -23,11 +25,13 @@ const FormLogin = ({ history }: RouteComponentProps) => {
       className="form-container"
       onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true)
         const user: userInt = await handleSubmit(login);
         if (user) {
           dispatch(addCurrentUser(user));
           history.push("/");
         } else {
+          setLoading(false)
           setValidation(true);
         }
       }}
@@ -75,7 +79,7 @@ const FormLogin = ({ history }: RouteComponentProps) => {
         <span className="forgot-pass">Forgot password?</span>
       </div>
       <Button className="submit-btn" type="submit">
-        Log In
+        {loading ? <Spinner animation="border" variant="light" /> : "Log In"}
       </Button>
     </Form>
   );

@@ -17,36 +17,43 @@ export interface signUpInt {
 
 export interface friendsInt {
   user: {
-    _id: String;
+    _id: string;
   };
   status: Number;
 }
 
 export interface myOwnerInt {
-  name: String;
-  surname: String;
-  avatar?: String;
-  birthday?: String;
+  name: string;
+  surname: string;
+  avatar?: string;
+  birthday?: string;
 }
 
 export interface userInt {
-  name: String;
-  nickname?: String;
-  username: String;
-  avatar: String;
-  species?: String;
-  email: String;
-  password: String;
-  bio?: String;
-  birthday?: String;
-  city?: String;
+  petName: string;
+  nickname?: string;
+  username: string;
+  avatar: string;
+  species?: string;
+  email: string;
+  password: string;
+  bio?: string;
+  birthday?: string;
+  city?: string;
   myOwner: myOwnerInt;
   friends: Array<friendsInt>;
-  refreshToken: String | null;
+  refreshToken: string | null;
 }
 
 export interface reduxStateInt {
   user: {
     currentUser: userInt | null;
   };
+}
+
+export interface meProfileNavInt{
+  posts: boolean,
+  informations: boolean,
+  friends: boolean,
+  photos: boolean
 }

@@ -1,6 +1,141 @@
-.me-page-big-cont{
+.me-page-big-cont {
+  width: 100%;
+  min-height: 100vh;
+  padding-left: 15%;
+  background-color: #f0f0f2;
+}
+
+.profile-container {
+  width: 100%;
+  height: 100vh;
+}
+
+/* -------------------------------HERO SECTION------------------------------- */
+
+.hero-profile {
+  width: 100%;
+  height: 50%;
+  box-shadow: 5px 0px 10px #dcdcdd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.avatar-container {
+  height: 13rem;
+  width: 13rem;
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img.avatar-me-page {
+  width: 90%;
+  border-radius: 50%;
+}
+
+.camera-icon {
+  height: 2.5rem;
+  width: auto;
+  padding: 0.5rem;
+  font-size: 2rem;
+  color: white;
+  background-color: #303233;
+  border-radius: 50%;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.camera-icon:hover{
+    background-color: #4f5253;
+    cursor: pointer;
+}
+
+h4.me-page-name {
+  color: #303233;
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+span.me-page-username {
+  font-size: 1rem;
+  color: #a8a8a8;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.me-profile-nav-container{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.me-page-links{
+    color: #f7a072;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0 1.5rem;
+    cursor: pointer;
+}
+
+.me-page-links.active{
+    text-decoration: underline #f7a072 2px;
+    text-underline-offset: 4px;
+}
+
+/* -----------------------------ME POSTS--------------------------- */
+
+.me-posts-container{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 7rem;
+
+}
+
+/* -----------------------------ME INFORMATIONS--------------------------- */
+
+.me-information-container{
+    width: 100%;
+    display: flex;
+    padding: 1rem 10%;
+}
+
+.me-pet-info-container{
+    width: 59%;
+}
+
+.me-my-owner-info-container{
+    width: 39%;
+}
+
+.divider-me-info{
+width: 2%;
+}
+
+/* ----------------------------MEDIA QUERY---------------------------------- */
+
+@media screen and (max-width: 1000px) {
+  .me-page-big-cont {
     width: 100%;
     min-height: 100vh;
-    padding-left: 15%;
+    padding-left: 0;
+    padding-bottom: 3rem;
     background-color: #f0f0f2;
+  }
 }
