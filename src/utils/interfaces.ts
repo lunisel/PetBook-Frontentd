@@ -1,6 +1,7 @@
 export interface logInInt {
   email: string;
   password: string;
+  stayConnected: boolean
 }
 
 export interface signUpInt {
