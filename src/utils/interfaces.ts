@@ -33,7 +33,7 @@ export interface userInt {
   name: String;
   nickname?: String;
   username: String;
-  avatar?: String;
+  avatar: String;
   species?: String;
   email: String;
   password: String;

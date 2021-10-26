@@ -32,20 +32,20 @@
 }
 
 .paw-icon {
-  color: #f0f0f2;
+  color: white;
   font-size: 20rem;
 }
 
 .text-logo {
   margin: 0;
   font-size: 6.5rem;
-  color: #f0f0f2;
+  color: white;
   font-family: "Pacifico", cursive;
   font-weight: 500;
 }
 
 .welcome-text {
-  color: #f0f0f2;
+  color: white;
   font-size: 3rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -128,7 +128,7 @@ input.input-text {
   border-radius: 50px;
   background-color: #77bfa6;
   border: solid transparent 1px;
-  color: #f0f0f2;
+  color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;

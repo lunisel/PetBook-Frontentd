@@ -8,6 +8,9 @@ import {
 import Login from "./components/login/Login";
 import Signup from "./components/registration/Signup";
 import Home from "./components/home/Home";
+import Feed from "./components/feed/Feed"
+import MePage from "./components/profile/MeProfile"
+import Notes from "./components/notes/Notes"
 import "./App.css";
 import { useSelector } from "react-redux";
 import { reduxStateInt, userInt } from "./utils/interfaces";
@@ -42,6 +45,45 @@ function App() {
               path="/"
               render={(routerProps: RouteComponentProps) => (
                 <Home {...routerProps} />
+              )}
+            />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route exact path="/feed">
+          {user ? (
+            <Route
+              exact
+              path="/feed"
+              render={(routerProps: RouteComponentProps) => (
+                <Feed {...routerProps} />
+              )}
+            />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route exact path="/me">
+          {user ? (
+            <Route
+              exact
+              path="/me"
+              render={(routerProps: RouteComponentProps) => (
+                <MePage {...routerProps} />
+              )}
+            />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route exact path="/notes">
+          {user ? (
+            <Route
+              exact
+              path="/notes"
+              render={(routerProps: RouteComponentProps) => (
+                <Notes {...routerProps} />
               )}
             />
           ) : (

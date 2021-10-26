@@ -127,7 +127,7 @@ const Navbar = ({ history, location }: RouteComponentProps) => {
           dispatch(disconnectUser());
           setTimeout(() => {
             history.push("/login");
-          }, 2000);
+          }, 3000);
         }}
       />
     </div>
