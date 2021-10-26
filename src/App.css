@@ -1,11 +1,152 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
-.App{
+.App {
   width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Montserrat", sans-serif;
+}
+
+/* -----------------------NAVBAR-------------------- */
+
+.nav-container {
+  height: 100vh;
+  width: 15%;
+  background-color: #77bfa6;
+  position: fixed;
+  left: 0;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  color: #f0f0f2;
+  font-size: 4rem;
+  position: absolute;
+  top: 4rem;
+}
+
+.text-logo-nav {
+  font-family: "Pacifico", cursive;
+  color: #f0f0f2;
+  font-size: 2.5rem;
+  position: absolute;
+  top: 9rem;
+}
+
+.link-container {
+  width: 100%;
+  padding: 0.4rem 0 0.4rem 10%;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.link-container:hover {
+  background-color: #30323317;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link-icon-nav,
+.link-nav {
+  color: #f0f0f2;
+}
+
+.link-icon-nav {
+  font-size: 1.8rem;
+  margin-right: 1.5rem;
+  width: 20%;
+}
+
+.link-nav {
+  font-size: 1.1rem;
+  font-weight: 400;
+  width: 80%;
+}
+
+.link-nav:hover {
+  text-decoration: none;
+  color: #f0f0f2;
+}
+
+.link-nav.active {
+  font-weight: 700;
+}
+
+.log-out-icon {
+  color: #f0f0f2;
+  font-size: 3rem;
+  position: absolute;
+  bottom: 4rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.log-out-icon:hover {
+  background-color: #30323317;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1500px) {
+  .link-icon-nav {
+    margin-right: 0.3rem;
+  }
+
+  .text-logo-nav {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-container {
+    height: 3rem;
+    width: 100%;
+    background-color: #77bfa6;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .link-container {
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .link-icon-nav {
+    font-size: 1.8rem;
+    margin-right: 0;
+    width: fit-content;
+  }
+
+  .link-container.active{
+    background-color: #30323317;
+  }
 }
