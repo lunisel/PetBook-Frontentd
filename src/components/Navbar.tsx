@@ -122,7 +122,7 @@ const Navbar = ({ history, location }: RouteComponentProps) => {
       </Link>
 
       <BiLogOut
-        className="log-out-icon"
+        className={vw <= 1000 ? " d-none" : "log-out-icon"}
         onClick={() => {
           dispatch(disconnectUser());
           setTimeout(() => {

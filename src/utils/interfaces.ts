@@ -1,7 +1,7 @@
 export interface logInInt {
   email: string;
   password: string;
-  stayConnected: boolean
+  stayConnected: boolean;
 }
 
 export interface signUpInt {
@@ -51,9 +51,24 @@ export interface reduxStateInt {
   };
 }
 
-export interface meProfileNavInt{
-  posts: boolean,
-  informations: boolean,
-  friends: boolean,
-  photos: boolean
+export interface meProfileNavInt {
+  posts: boolean;
+  informations: boolean;
+  friends: boolean;
+  photos: boolean;
+}
+
+export interface infoMeInt {
+  bio?: string;
+  species?: string;
+  birthday?: string;
+  city?: string;
+  email: string;
+  password: string;
+  myOwner: {
+    name: string;
+    surname: string;
+    avatar: string;
+    birthday?: string;
+  };
 }

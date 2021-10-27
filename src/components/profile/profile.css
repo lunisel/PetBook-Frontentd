@@ -1,8 +1,9 @@
 .me-page-big-cont {
   width: 100%;
-  min-height: 100vh;
+  flex-grow: 1;
   padding-left: 15%;
   background-color: #f0f0f2;
+  position: relative;
 }
 
 .profile-container {
@@ -52,9 +53,9 @@ img.avatar-me-page {
   bottom: 1rem;
 }
 
-.camera-icon:hover{
-    background-color: #4f5253;
-    cursor: pointer;
+.camera-icon:hover {
+  background-color: #4f5253;
+  cursor: pointer;
 }
 
 h4.me-page-name {
@@ -72,64 +73,162 @@ span.me-page-username {
   font-weight: 600;
 }
 
-.me-profile-nav-container{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.me-profile-nav-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.me-page-links{
-    color: #f7a072;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin: 0 1.5rem;
-    cursor: pointer;
+.me-page-links {
+  color: #f7a072;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0 1.5rem;
+  cursor: pointer;
 }
 
-.me-page-links.active{
-    text-decoration: underline #f7a072 2px;
-    text-underline-offset: 4px;
+.me-page-links.active {
+  text-decoration: underline #f7a072 2px;
+  text-underline-offset: 4px;
 }
 
 /* -----------------------------ME POSTS--------------------------- */
 
-.me-posts-container{
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 7rem;
-
+.me-posts-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 7rem;
+  background-color: #f0f0f2;
 }
 
 /* -----------------------------ME INFORMATIONS--------------------------- */
 
-.me-information-container{
-    width: 100%;
-    display: flex;
-    padding: 1rem 10%;
-    justify-content: space-between;
-    align-items: center;
+.me-information-container {
+  width: 100%;
+  display: flex;
+  padding: 1rem 10%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f0f0f2;
 }
 
-.me-pet-info-container{
-    width: 59%;
+.me-pet-info-container {
+  width: 55%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgb(219, 219, 219);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0;
 }
 
-.me-my-owner-info-container{
-    width: 39%;
+.me-my-owner-info-container {
+  width: 35%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgb(219, 219, 219);
 }
 
-.divider-me-info{
-width: 1px;
-height: 20rem;
-background-color: #30323380;
+.divider-me-info {
+  width: 1px;
+  height: 25rem;
+  background-color: #30323380;
+}
+
+.info-content-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem 0.8rem 2rem;
+  position: relative;
+}
+
+.info-name {
+  color: #303233;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+.info-content {
+  width: 78%;
+  border: transparent 1px solid;
+  border-bottom: #f7a072 2px solid;
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+:focus-visible {
+  outline: #75757530 auto 1px;
+}
+
+.info-content-textarea {
+  width: 78%;
+  height: auto;
+  border: transparent 1px solid;
+  border-bottom: #f7a072 2px solid;
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.input-check {
+  position: absolute;
+  top: 1.2rem;
+  right: 2.1rem;
+  color: #f7a072;
+  cursor: pointer;
+}
+
+.me-my-owner-info-container {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  position: relative;
+}
+
+.avatar-owner-container {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem 0.8rem 2rem;
+  position: relative;
+}
+
+.avatar-me-page {
+  height: 5rem;
+}
+
+.info-content-container.owner {
+  padding: 0.8rem 0.5rem;
+}
+
+.info-content.owner {
+  border-bottom: #77BFA6 2px solid;
+}
+.input-check.owner{
+  right: 1.2rem;
+  color: #77BFA6;
+}
+
+.camera-icon.owner{
+  right: 1.5rem;
+  height: 2rem;
 }
 
 /* ----------------------------MEDIA QUERY---------------------------------- */
@@ -142,4 +241,81 @@ background-color: #30323380;
     padding-bottom: 3rem;
     background-color: #f0f0f2;
   }
+
+  /* ------------------------------------HERO SECTION QUERY----------------------- */
+
+  .avatar-container {
+    height: 9rem;
+    width: 9rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-profile {
+    height: 45% !important;
+    width: 100%;
+    box-shadow: 5px 0px 10px #dcdcdd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  h4.me-page-name {
+    font-size: 1.1rem;
+    margin-top: 0.3rem;
+  }
+
+  .me-page-username {
+    font-size: 0.8rem !important;
+    margin-top: 0 !important;
+  }
+
+  .me-page-links {
+    font-size: 0.9rem !important;
+    font-weight: 400;
+    margin: 0 0.6rem;
+  }
+
+  .me-profile-nav-container {
+    height: 2rem;
+  }
+
+  /* --------------------------------ME PAGE INFO QUERY--------------------------- */
+
+  .me-information-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 10%;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f0f0f2;
+    padding-bottom: 3.5rem;
+  }
+
+  .me-pet-info-container {
+    width: 100%;
+  }
+
+  .divider-me-info {
+    width: 90%;
+    height: 1px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .me-my-owner-info-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 10%;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f0f0f2;
+    padding-bottom: 3.5rem;
+    position: relative;
+  }
+
+  /* ---------------------------ME PAGE POSTS QUERY--------------------------------*/
 }
