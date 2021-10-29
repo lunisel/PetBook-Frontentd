@@ -219,14 +219,14 @@ span.me-page-username {
 }
 
 .info-content.owner {
-  border-bottom: #77BFA6 2px solid;
+  border-bottom: #77bfa6 2px solid;
 }
-.input-check.owner{
+.input-check.owner {
   right: 1.2rem;
-  color: #77BFA6;
+  color: #77bfa6;
 }
 
-.camera-icon.owner{
+.camera-icon.owner {
   right: 1.5rem;
   height: 2rem;
 }
@@ -318,4 +318,16 @@ span.me-page-username {
   }
 
   /* ---------------------------ME PAGE POSTS QUERY--------------------------------*/
+}
+
+@media screen and (max-height: 750px) {
+  .avatar-container {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  span.me-page-username,
+  h4.me-page-name {
+    margin: 0;
+  }
 }
