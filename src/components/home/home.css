@@ -2,9 +2,9 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background-color: #f0f0f2;
   padding-left: 15%;
   display: flex;
+  background-color: #f0f0f2;
 }
 
 .big-row-container {
@@ -14,13 +14,20 @@
 }
 
 .posts-container {
-  width: 75%;
-  height: 100%;
+  width: 100%;
+  height: fit-content;
+  padding: 2rem 5%;
+  background-color: #f0f0f2;
+  padding-right: 30%;
 }
 
 .online-users-container {
+  position: absolute;
+  right: 0;
   width: 25%;
-  height: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1000px) {
@@ -37,10 +44,10 @@
 /* ------------------------SENDPOSTS---------------------- */
 
 .form-container-home {
-  width: 60%;
+  width: 90%;
   height: 4.5rem;
   margin: auto;
-  margin-top: 2rem;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   padding: 0.8rem;

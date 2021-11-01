@@ -1,0 +1,70 @@
+.single-post-container{
+    width: 100%;
+    background-color: white;
+    padding: 1rem 2rem;
+    box-shadow: 3px 3px 10px rgb(172, 172, 172, 20%);
+    margin: 1.5rem 0;
+    border-radius: 15px;
+}
+
+.post-info-row{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.post-avatar-container{
+    width: 3rem;
+    height: 3rem;
+}
+
+.post-avatar{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.post-user-info-cont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+
+.post-user-name{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #303233;
+    line-height: 1.1rem;
+}
+
+.post-user-username{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #303233c0;
+}
+
+.post-timestamp{
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #30323380;
+}
+
+.post-three-dots{
+    color: #303233c0;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+}
+
+.post-three-dots:hover{
+    background-color: #30323310;
+    cursor: pointer;
+}
+
+.post-text-container{
+    padding: 0.5rem 0;
+}

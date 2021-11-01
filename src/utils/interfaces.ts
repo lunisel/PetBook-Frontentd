@@ -72,3 +72,28 @@ export interface infoMeInt {
     birthday?: string;
   };
 }
+
+interface commentsInt{
+  refPost: string,
+  user: string,
+  text: string
+}
+
+export interface postInt{
+  user: string,
+  content:{
+    text: string,
+    img?: string
+  },
+  likes: Array<userInt>,
+  comments: Array<commentsInt>
+  createdAt: Date,
+  updatedAt: Date
+}
+
+export interface sendPostInt{
+  content:{
+    text: string,
+    img?: string
+  }
+}

@@ -238,7 +238,7 @@ const MeInformation = () => {
           <input
             type="password"
             placeholder="Write your password here..."
-            defaultValue={user?.password}
+            defaultValue="••••••••••"
             className="info-content"
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
                 handleOnChange(e, "password", updatedUser, setUpdatedUser, user!);
