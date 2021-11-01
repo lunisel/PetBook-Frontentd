@@ -25,7 +25,7 @@ export interface friendsInt {
 export interface myOwnerInt {
   name: string;
   surname: string;
-  avatar?: string;
+  ownerAvatar?: string;
   birthday?: string;
 }
 
@@ -68,7 +68,7 @@ export interface infoMeInt {
   myOwner: {
     name: string;
     surname: string;
-    avatar: string;
+    ownerAvatar: string;
     birthday?: string;
   };
 }

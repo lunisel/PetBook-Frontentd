@@ -1,15 +1,24 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
-import { reduxStateInt } from "../../utils/interfaces";
+import { reduxStateInt, userInt } from "../../utils/interfaces";
 import Navbar from "../Navbar";
-import MePosts from "./MePosts"
-import MeInformation from "./MeInformation"
-import { GoDeviceCamera } from "react-icons/go";
+import MePosts from "./MePosts";
+import MeInformation from "./MeInformation";
+import { GoDeviceCamera, GoCheck } from "react-icons/go";
 import "./profile.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { handleFileUpload } from "./profileLogic";
+import { addCurrentUser } from "../../redux/actions/user";
 
 const MePage = ({ history }: RouteComponentProps) => {
   const user = useSelector((state: reduxStateInt) => state.user.currentUser);
+
+  const inputFile = useRef<any>(null);
+
+  const dispatch = useDispatch()
+
+  const [newAvatar, setNewAvatar] = useState<any>(null)
+  const [avatarPreview, setPreview] = useState<any>(null)
 
   const [pages, setPages] = useState({
     posts: true,
@@ -18,17 +27,45 @@ const MePage = ({ history }: RouteComponentProps) => {
     photos: false,
   });
 
+  const setImgPreview = () => {
+    const reader = new FileReader()
+    reader.readAsDataURL(newAvatar)
+    reader.onloadend = () => {
+      setPreview(reader.result)
+    }
+  }
+
+  const changeImg = () => {
+    inputFile.current.click();
+  };
+
   return (
     <div className="me-page-big-cont">
       <div className="profile-container">
         <div className="hero-profile">
-          <div className="avatar-container">
+          <div className="avatar-container" onClick={() => changeImg()}>
+            <input
+              type="file"
+              id="file"
+              ref={inputFile}
+              style={{ display: "none" }}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setNewAvatar(e.target.files![0])
+                if(newAvatar) setImgPreview()
+                /* if(newUser){
+                  dispatch(addCurrentUser(newUser))
+                  setTimeout(() => {
+                    window.location.reload()
+                  }, 1000);
+                } */
+              }}
+            />
             <img
-              src={user?.avatar}
+              src={avatarPreview ? newAvatar.name : user?.avatar}
               alt="pet-avatar"
               className="avatar-me-page img-fluid"
             />
-            <GoDeviceCamera className="camera-icon" />
+            {newAvatar ? <GoCheck className="check-icon-avatar"/> :<GoDeviceCamera className="camera-icon" />}
           </div>
           <h4 className="me-page-name">{user?.petName}</h4>
           <span className="me-page-username">@{user?.username}</span>
@@ -93,8 +130,8 @@ const MePage = ({ history }: RouteComponentProps) => {
             </span>
           </div>
         </div>
-        {pages.posts && <MePosts/>}
-        {pages.informations && <MeInformation/>}
+        {pages.posts && <MePosts />}
+        {pages.informations && <MeInformation />}
       </div>
       <Navbar />
     </div>

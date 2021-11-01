@@ -37,11 +37,12 @@
 
 img.avatar-me-page {
   width: 90%;
+  height: 90%;
   border-radius: 50%;
 }
 
 .camera-icon {
-  height: 2.5rem;
+  height: 2.3rem;
   width: auto;
   padding: 0.5rem;
   font-size: 2rem;
@@ -49,12 +50,27 @@ img.avatar-me-page {
   background-color: #303233;
   border-radius: 50%;
   position: absolute;
-  right: 1rem;
-  bottom: 1rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  opacity: 0;
+  transition: opacity 1sec;
+}
+
+.check-icon-avatar{
+  height: 2.3rem;
+  width: auto;
+  padding: 0.5rem;
+  font-size: 2rem;
+  color: white;
+  background-color: #77bfa6;
+  border-radius: 50%;
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
 }
 
 .camera-icon:hover {
-  background-color: #4f5253;
+  opacity: 1;
   cursor: pointer;
 }
 
