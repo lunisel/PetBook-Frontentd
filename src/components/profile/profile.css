@@ -121,7 +121,7 @@ span.me-page-username {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 7rem;
+  padding: 2rem 20%;
   background-color: #f0f0f2;
 }
 
@@ -247,7 +247,7 @@ span.me-page-username {
   height: 2rem;
 }
 
-/* ----------------------------MEDIA QUERY---------------------------------- */
+/* ----------------------------------------------MEDIA QUERY------------------------------------------------- */
 
 @media screen and (max-width: 1000px) {
   .me-page-big-cont {
@@ -345,5 +345,15 @@ span.me-page-username {
   span.me-page-username,
   h4.me-page-name {
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 650px){
+  .me-posts-container{
+  padding: 2rem 5%;
+  }
+  .form-container-home{
+    width: 100%;
+    margin-bottom: 0;
   }
 }

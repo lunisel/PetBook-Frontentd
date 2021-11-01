@@ -26,3 +26,19 @@ export const getMePosts = async () => {
             console.log(err);
           }
 }
+
+export const deletePosts = async (id: string) => {
+    try {
+        let response = await fetch(`${process.env.REACT_APP_BE_URL}/posts/${id}`,{
+            method: "DELETE",
+            headers:{
+                "Authorization" : `Bearer ${window.localStorage.getItem("token")}`
+            }
+        })
+        if(response.ok){
+            window.location.reload()
+        }
+        } catch (err) {
+            console.log(err);
+          }
+}
