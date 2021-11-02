@@ -1,4 +1,4 @@
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps } from "react-router-dom";
 import Navbar from "../Navbar";
 import SendPost from "../posts/SendPosts";
 import { getAllPosts } from "../posts/postLogic";
@@ -7,15 +7,16 @@ import { useEffect, useState } from "react";
 import { postInt } from "../../utils/interfaces";
 import SinglePost from "../posts/SinglePost";
 import { Spinner } from "react-bootstrap";
+import {sendRequestWithToken} from "../../utils/commonLogic"
 
-const Home = ({ history }: RouteComponentProps) => {
+const Home = (props: RouteComponentProps) => {
   const [allPosts, setAllPosts] = useState<postInt[] | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const setPosts = async () => {
       setLoading(true);
-      let posts = await getAllPosts();
+      let posts = await sendRequestWithToken(getAllPosts, props, "");
       if (posts) {
         setAllPosts(posts);
         setLoading(false);

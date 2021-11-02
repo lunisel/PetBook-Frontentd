@@ -1,3 +1,5 @@
+import { RouteComponentProps } from "react-router";
+
 export interface logInInt {
   email: string;
   password: string;
@@ -96,4 +98,10 @@ export interface sendPostInt{
     text: string,
     img?: string
   }
+}
+
+export interface sendRequestWithTokenPropsInt {
+  requestFuncion: any,
+  props: RouteComponentProps,
+  id?: string
 }

@@ -4,15 +4,18 @@ import {getMePosts} from "../posts/postLogic"
 import { useEffect, useState } from "react";
 import { postInt } from "../../utils/interfaces";
 import { Spinner } from "react-bootstrap";
+import {sendRequestWithToken} from "../../utils/commonLogic"
+import { RouteComponentProps, withRouter } from "react-router";
 
-const MePosts = () => {
+const MePosts = (props : RouteComponentProps) => {
 const [allPosts, setAllPosts] = useState<postInt[] | null>(null);
   const [loading, setLoading] = useState(false);
+  
 
   useEffect(() => {
     const setPosts = async () => {
       setLoading(true);
-      let posts = await getMePosts();
+      let posts = await sendRequestWithToken(getMePosts, props, "");
       if (posts) {
         setAllPosts(posts);
         setLoading(false);
@@ -37,4 +40,4 @@ const [allPosts, setAllPosts] = useState<postInt[] | null>(null);
     )
 }
 
-export default MePosts
+export default withRouter(MePosts)

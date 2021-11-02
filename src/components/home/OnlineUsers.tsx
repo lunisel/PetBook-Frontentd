@@ -5,3 +5,5 @@ const OnlineUsers = () => {
         </div>
     )
 }
+
+export default OnlineUsers

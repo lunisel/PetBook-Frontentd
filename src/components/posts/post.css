@@ -1,144 +1,242 @@
-.single-post-container{
-    width: 100%;
-    background-color: white;
-    padding: 1rem 2rem;
-    box-shadow: 3px 3px 10px rgb(172, 172, 172, 20%);
-    margin: 1rem 0;
-    border-radius: 15px;
-    position: relative;
+.single-post-container {
+  width: 100%;
+  background-color: white;
+  padding: 1rem 2rem;
+  box-shadow: 3px 3px 10px rgb(172, 172, 172, 20%);
+  margin: 1rem 0;
+  border-radius: 15px;
+  position: relative;
 }
 
-.post-info-row{
-    height: fit-content;
+.post-info-row {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.post-avatar-container {
+  width: 3rem;
+  height: 3rem;
+}
+
+.post-avatar {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.post-user-info-cont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+
+.post-user-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #303233;
+  line-height: 1.1rem;
+}
+
+.post-user-username {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #303233c0;
+}
+
+.post-timestamp {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #30323380;
+}
+
+.post-three-dots {
+  color: #303233c0;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+}
+
+.post-three-dots:hover {
+  background-color: #30323310;
+  cursor: pointer;
+}
+
+.post-text-container {
+  padding: 0.5rem 0;
+}
+
+.dropdown-container {
+  padding: 1rem 0.5rem;
+  background-color: white;
+  width: 10rem;
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  box-shadow: 2px 2px 10px rgb(95, 95, 95, 20%);
+  border-radius: 10px;
+}
+
+.post-list-container {
+  width: 100%;
+  padding: 0.3rem 1rem;
+}
+
+.post-list-container:hover {
+  background-color: rgb(95, 95, 95, 10%);
+  cursor: pointer;
+}
+
+.dropdown-link-post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-trash-icon {
+  color: #f7a072;
+}
+
+.img-post-container {
+  width: 100%;
+  height: 20rem;
+  padding-bottom: 1rem;
+}
+
+img.img-post {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+img.img-post:hover {
+  cursor: pointer;
+  opacity: 90%;
+}
+
+.post-like-comment-buttons-cont{
     width: 100%;
+    padding-top: 0.5rem;
+    border-top: solid 1px #30323350;
+    display: flex;
+}
+
+.post-like-comment-btn{
+    width: 50%;
+    padding: 0.4rem 0;
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
+    justify-content: center;
+    border-radius: 7px;
+    background-color: transparent;
+    transition: background-color 200ms;
 }
 
-.post-avatar-container{
-    width: 3rem;
-    height: 3rem;
-}
-
-.post-avatar{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.post-user-info-cont{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-left: 1rem;
-}
-
-.post-user-name{
-    font-size: 1rem;
-    font-weight: 600;
-    color: #303233;
-    line-height: 1.1rem;
-}
-
-.post-user-username{
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #303233c0;
-}
-
-.post-timestamp{
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: #30323380;
-}
-
-.post-three-dots{
-    color: #303233c0;
-    width: 1.8rem;
-    height: 1.8rem;
-    border-radius: 50%;
-}
-
-.post-three-dots:hover{
+.post-like-comment-btn:hover{
     background-color: #30323310;
     cursor: pointer;
 }
 
-.post-text-container{
-    padding: 0.5rem 0;
+.like-comment-icon{
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    color: #303233d0;
 }
 
-.dropdown-container{
-    padding: 1rem 0.5rem;
-    background-color: white;
-    width: 10rem;
-    position: absolute;
-    top: 4rem;
-    right: 2rem;
-    box-shadow: 2px 2px 10px rgb(95, 95, 95, 20%);
-    border-radius: 10px;
+.post-likes-container{
+    padding-bottom: 0.5rem;
 }
 
-.post-list-container{
+/* -------------------------------------------- MODAL CSS----------------------------------------- */
+
+.fade.big-modal-container.modal {
+  width: 100vw;
+  height: 100vh;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-dialog {
+  margin: 0 !important;
+  width: 90% !important;
+  height: 90%;
+  position: relative;
+}
+
+.modal-content {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-title.h4 {
+  display: flex;
+  align-items: center;
+}
+
+.modal-header {
+  height: 3rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 0 !important;
+  padding-right: 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 2000;
+}
+
+.modal-body {
+  width: 100%;
+  height: 100%;
+  padding-top: 4rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-modal-cont {
+  width: 50%;
+  max-height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+img.img-modal-big {
+  width: 100%;
+  object-fit: cover;
+}
+
+.modal-post-container {
+  width: 50%;
+  height: 100%;
+  padding: 3rem;
+  
+}
+
+.modal-post-container.with-left-border{
+    border-left: solid 1px #30323350;
+}
+
+.modal-user-info-container{
     width: 100%;
-    padding: 0.3rem 1rem;
-}
-
-.post-list-container:hover{
-    background-color: rgb(95, 95, 95, 10%);
-    cursor: pointer;
-}
-
-.dropdown-link-post{
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
-.post-trash-icon{
-    color: #f7a072;
+.modal-post-text-container{
+    padding: 1rem 0;
 }
 
-.img-post-container{
-    width: 100%;
-    height: 20rem;
-}
-
-img.img-post{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-img.img-post:hover{
-    cursor: pointer;
-    opacity: 90%;
-}
-
-.fade.big-modal-container.modal{
-    width: 100vw;
-    height: 100vh;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-dialog{
-    margin: 0 !important;
-    width: 90%;
-    height: 90%;
-}
-
-.modal-content{
-    width: 100%;
-    height: 100%;
-}
-
-@media (min-width: 576px){
-.modal-dialog {
+@media (min-width: 576px) {
+  .modal-dialog {
     max-width: 70vw !important;
     margin: 0 !important;
-}
+  }
 }

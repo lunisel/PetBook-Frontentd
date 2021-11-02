@@ -1,13 +1,16 @@
-import { postInt, reduxStateInt } from "../../utils/interfaces";
+import { reduxStateInt } from "../../utils/interfaces";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { VscTrash } from "react-icons/vsc";
+import { VscTrash, VscEdit } from "react-icons/vsc";
+import { FaRegThumbsUp, FaRegComment } from "react-icons/fa";
 import "./post.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { deletePosts } from "./postLogic";
 import { Button, Modal } from "react-bootstrap";
+import { RouteComponentProps, withRouter } from "react-router";
+import { sendRequestWithToken } from "../../utils/commonLogic";
 
-const SinglePost = ({ post }: any) => {
+const SinglePost = ({ post }: any, props: RouteComponentProps) => {
   const currentUser = useSelector(
     (state: reduxStateInt) => state.user.currentUser
   );
@@ -51,11 +54,24 @@ const SinglePost = ({ post }: any) => {
           <div className="dropdown-container">
             <div
               className="post-list-container"
-              onClick={() => deletePosts(post._id)}
+              onClick={async () => {
+                await sendRequestWithToken(deletePosts, props, post._id);
+              }}
             >
               <span className="dropdown-link-post">
                 <VscTrash className="post-trash-icon mr-3" />
                 Delete
+              </span>
+            </div>
+            <div
+              className="post-list-container"
+              onClick={() => {
+                handleShow();
+              }}
+            >
+              <span className="dropdown-link-post">
+                <VscEdit className="post-trash-icon mr-3" />
+                Modify
               </span>
             </div>
           </div>
@@ -78,23 +94,66 @@ const SinglePost = ({ post }: any) => {
       ) : (
         ""
       )}
+      {post.likes.length !== 0 ? (
+        <div className="post-likes-container">{post.likes.length} Likes</div>
+      ) : (
+        ""
+      )}
+      <div className="post-like-comment-buttons-cont">
+        <div className="post-like-comment-btn">
+          <FaRegThumbsUp className="like-comment-icon" />
+          Like
+        </div>
+
+        <div className="post-like-comment-btn" onClick={()=> handleShow()}>
+          <FaRegComment className="like-comment-icon"/>
+          Comment
+        </div>
+      </div>
 
       <Modal show={show} onHide={handleClose} className="big-modal-container">
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
+          {post.content.img ? (
+            <div className="img-modal-cont">
+              <img
+                src={post.content.img}
+                alt="post-cover"
+                className="img-modal-big"
+              />
+            </div>
+          ) : (
+            ""
+          )}
+          <div
+            className={
+              post.content.img
+                ? "modal-post-container with-left-border"
+                : "modal-post-container"
+            }
+          >
+            <div className="modal-user-info-container">
+              <div className="post-avatar-container mr-3">
+                <img
+                  src={user.avatar}
+                  alt="pet-avatar"
+                  className="post-avatar"
+                />
+              </div>
+              <div className="post-user-info-cont">
+                <span className="post-user-name">{user.petName}</span>
+                <span className="post-user-username">@{user.username}</span>
+                <span className="post-timestamp">{`${d}/${m}/${y}\n ${h}:${min}`}</span>
+              </div>
+            </div>
+            <div className="modal-post-text-container">
+              <span className="post-text">{post.content.text}</span>
+            </div>
+          </div>
+        </Modal.Body>
       </Modal>
     </div>
   );
 };
 
-export default SinglePost;
+export default withRouter(SinglePost);
