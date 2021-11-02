@@ -16,7 +16,7 @@ const Home = (props: RouteComponentProps) => {
   useEffect(() => {
     const setPosts = async () => {
       setLoading(true);
-      let posts = await sendRequestWithToken(getAllPosts, props, "");
+      let posts = await sendRequestWithToken(getAllPosts, props, "", "");
       if (posts) {
         setAllPosts(posts);
         setLoading(false);

@@ -37,7 +37,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
               if (e.key === "Enter") {
                 setLoading(true);
-                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser, "" );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -56,7 +56,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await sendRequestWithToken(handleSubmit, props, updatedUser )
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser, "" )
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -79,7 +79,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
               if (e.key === "Enter") {
                 setLoading(true);
-                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser , "");
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -98,7 +98,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser, "" );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -121,7 +121,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser, "" );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -140,7 +140,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser,"" );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -163,7 +163,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser,"" );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -182,7 +182,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser ,"");
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -205,7 +205,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser,"" );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -224,7 +224,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser,"" );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -247,7 +247,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser,"" );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -266,7 +266,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser,"" );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -301,7 +301,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser,"" );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -320,7 +320,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check owner"
               onClick={async () => {
                 setLoading(true);
-                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser,"" );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -343,7 +343,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data = await  await sendRequestWithToken(handleSubmit, props, updatedUser );
+                  let data = await  await sendRequestWithToken(handleSubmit, props, updatedUser ,"");
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -362,7 +362,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check owner"
               onClick={async () => {
                 setLoading(true);
-                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser ,"");
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -385,7 +385,7 @@ const MeInformation = (props: RouteComponentProps) => {
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser ,"");
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -404,7 +404,7 @@ const MeInformation = (props: RouteComponentProps) => {
               className="input-check owner"
               onClick={async () => {
                 setLoading(true);
-                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser );
+                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser ,"");
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);

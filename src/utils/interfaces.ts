@@ -75,14 +75,15 @@ export interface infoMeInt {
   };
 }
 
-interface commentsInt{
+export interface commentsInt{
   refPost: string,
   user: string,
   text: string
 }
 
 export interface postInt{
-  user: string,
+  _id: string 
+  user: userInt,
   content:{
     text: string,
     img?: string

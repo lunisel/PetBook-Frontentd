@@ -15,7 +15,7 @@ const [allPosts, setAllPosts] = useState<postInt[] | null>(null);
   useEffect(() => {
     const setPosts = async () => {
       setLoading(true);
-      let posts = await sendRequestWithToken(getMePosts, props, "");
+      let posts = await sendRequestWithToken(getMePosts, props, "","");
       if (posts) {
         setAllPosts(posts);
         setLoading(false);

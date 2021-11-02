@@ -5,10 +5,11 @@ export const sendRequestWithToken = async (
   requestFuncion: any,
   props: RouteComponentProps,
   functionProp: string | null | infoMeInt | sendPostInt,
+  secondFuncProp: string | null
   
 ) => {
   try {
-    let response = await requestFuncion(functionProp);
+    let response = await requestFuncion(functionProp, secondFuncProp);
     console.log("Common Logic ->", response);
     if (response.ok) {
       if (response.status === 204) {
@@ -40,7 +41,7 @@ export const sendRequestWithToken = async (
           let refreshToken = tokens.refreshToken;
           if (accessToken) localStorage.setItem("token", accessToken);
           if (refreshToken) localStorage.setItem("token2", refreshToken);
-          let resp = await requestFuncion(functionProp);
+          let resp = await requestFuncion(functionProp, secondFuncProp);
           if (resp.ok) {
             if (resp.status === 204) {
               window.location.reload();

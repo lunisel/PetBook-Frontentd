@@ -35,3 +35,20 @@ export const deletePosts = async (id: string) => {
     console.log(err);
   }
 };
+
+export const postNewComment = async (id: string, comment: string) => {
+  try {
+    console.log("post new comment function ->",comment)
+    let response = await fetch(`${process.env.REACT_APP_BE_URL}/posts/${id}/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({text: comment})
+    });
+    return response
+  } catch (err) {
+    console.log(err);
+  }
+};

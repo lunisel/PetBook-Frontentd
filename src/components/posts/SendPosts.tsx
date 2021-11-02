@@ -48,7 +48,7 @@ const SendPosts = (props: RouteComponentProps) => {
         }}
         onKeyPress={async (e: React.KeyboardEvent) => {
             if(e.key === "Enter"){
-              let data = await sendRequestWithToken(sendPost,props, newPost)
+              let data = await sendRequestWithToken(sendPost,props, newPost, "")
               if(data) window.location.reload()
             }
         }}
