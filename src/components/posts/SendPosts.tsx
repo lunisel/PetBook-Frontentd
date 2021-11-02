@@ -3,8 +3,10 @@ import { Form } from "react-bootstrap";
 import { FaPhotoVideo } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { reduxStateInt, sendPostInt } from "../../utils/interfaces";
+import {sendRequestWithToken} from "../../utils/commonLogic"
+import { RouteComponentProps, withRouter } from "react-router";
 
-const SendPosts = () => {
+const SendPosts = (props: RouteComponentProps) => {
   const user = useSelector((state: reduxStateInt) => state.user.currentUser);
 
   const [newPost, setNewPost] = useState<sendPostInt>({
@@ -55,7 +57,7 @@ const SendPosts = () => {
         }}
         onKeyPress={(e: React.KeyboardEvent) => {
             if(e.key === "Enter"){
-                sendPost(newPost)
+              sendRequestWithToken(sendPost,props, newPost)
             }
         }}
       />
@@ -64,4 +66,4 @@ const SendPosts = () => {
   );
 };
 
-export default SendPosts;
+export default withRouter(SendPosts);

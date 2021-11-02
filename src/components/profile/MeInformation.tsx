@@ -7,8 +7,10 @@ import { handleOnChange } from "./profileLogic";
 import { handleSubmit } from "../profile/profileLogic";
 import { addCurrentUser } from "../../redux/actions/user";
 import { Spinner } from "react-bootstrap";
+import {sendRequestWithToken} from "../../utils/commonLogic"
+import { RouteComponentProps, withRouter } from "react-router";
 
-const MeInformation = () => {
+const MeInformation = (props: RouteComponentProps) => {
   const user = useSelector((state: reduxStateInt) => state.user.currentUser);
 
   const dispatch = useDispatch();
@@ -24,17 +26,18 @@ const MeInformation = () => {
   return (
     <div className="me-information-container">
       <div className="me-pet-info-container">
+
         <div className="info-content-container">
           <span className="info-name">Bio:</span>
           <textarea
             placeholder="Write your bio here..."
             defaultValue={user?.bio}
             className="info-content-textarea"
+            onChange={(e : React.ChangeEvent<HTMLTextAreaElement>)=> {handleOnChange(e, "bio", updatedUser, setUpdatedUser, user!);}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-              handleOnChange(e, "bio", updatedUser, setUpdatedUser, user!);
               if (e.key === "Enter") {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -53,7 +56,7 @@ const MeInformation = () => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser )
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -72,11 +75,11 @@ const MeInformation = () => {
             placeholder="Write your species here..."
             defaultValue={user?.species}
             className="info-content"
+            onChange={(e : React.ChangeEvent<HTMLInputElement>)=> {handleOnChange(e, "species", updatedUser, setUpdatedUser, user!)}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
-              handleOnChange(e, "species", updatedUser, setUpdatedUser, user!);
               if (e.key === "Enter") {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -95,7 +98,7 @@ const MeInformation = () => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -114,11 +117,11 @@ const MeInformation = () => {
             placeholder="Write your birthday here..."
             defaultValue={user?.birthday}
             className="info-content"
+            onChange={(e : React.ChangeEvent<HTMLInputElement>)=> {handleOnChange(e, "birthday", updatedUser, setUpdatedUser, user!);}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
-                handleOnChange(e, "birthday", updatedUser, setUpdatedUser, user!);
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data = await handleSubmit(updatedUser);
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -137,7 +140,7 @@ const MeInformation = () => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -156,11 +159,11 @@ const MeInformation = () => {
             placeholder="Write your city here..."
             defaultValue={user?.city}
             className="info-content"
+            onChange={(e : React.ChangeEvent<HTMLInputElement>)=> {handleOnChange(e, "city", updatedUser, setUpdatedUser, user!);}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
-                handleOnChange(e, "city", updatedUser, setUpdatedUser, user!);
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data = await handleSubmit(updatedUser);
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -179,7 +182,7 @@ const MeInformation = () => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -198,11 +201,11 @@ const MeInformation = () => {
             placeholder="Write your email here..."
             defaultValue={user?.email}
             className="info-content"
+            onChange={(e : React.ChangeEvent<HTMLInputElement>)=> { handleOnChange(e, "email", updatedUser, setUpdatedUser, user!);}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
-                handleOnChange(e, "email", updatedUser, setUpdatedUser, user!);
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data = await handleSubmit(updatedUser);
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -221,7 +224,7 @@ const MeInformation = () => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -240,11 +243,11 @@ const MeInformation = () => {
             placeholder="Write your password here..."
             defaultValue="••••••••••"
             className="info-content"
+            onChange={(e : React.ChangeEvent<HTMLInputElement>)=> {handleOnChange(e, "password", updatedUser, setUpdatedUser, user!);}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
-                handleOnChange(e, "password", updatedUser, setUpdatedUser, user!);
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data = await handleSubmit(updatedUser);
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -263,7 +266,7 @@ const MeInformation = () => {
               className="input-check"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -294,11 +297,11 @@ const MeInformation = () => {
             placeholder="Write your owner's name here..."
             defaultValue={user?.myOwner.name}
             className="info-content owner"
+            onChange={(e : React.ChangeEvent<HTMLInputElement>)=> {handleOnChange(e, "name", updatedUser, setUpdatedUser, user!);}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
-                handleOnChange(e, "name", updatedUser, setUpdatedUser, user!);
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data = await handleSubmit(updatedUser);
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -317,7 +320,7 @@ const MeInformation = () => {
               className="input-check owner"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -336,11 +339,11 @@ const MeInformation = () => {
             placeholder="Write your owner's surname here..."
             defaultValue={user?.myOwner.surname}
             className="info-content owner"
+            onChange={(e : React.ChangeEvent<HTMLInputElement>)=> {handleOnChange(e, "surname", updatedUser, setUpdatedUser, user!);}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
-                handleOnChange(e, "surname", updatedUser, setUpdatedUser, user!);
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data = await handleSubmit(updatedUser);
+                  let data = await  await sendRequestWithToken(handleSubmit, props, updatedUser );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -359,7 +362,7 @@ const MeInformation = () => {
               className="input-check owner"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -378,11 +381,11 @@ const MeInformation = () => {
             placeholder="Write your owner's birthday here..."
             defaultValue={user?.myOwner.birthday}
             className="info-content owner"
+            onChange={(e : React.ChangeEvent<HTMLInputElement>)=> {handleOnChange(e, "birthdayOwner", updatedUser, setUpdatedUser, user!);}}
             onKeyPress={async (e: React.KeyboardEvent<HTMLInputElement>) => {
-                handleOnChange(e, "birthdayOwner", updatedUser, setUpdatedUser, user!);
                 if (e.key === "Enter") {
                   setLoading(true);
-                  let data = await handleSubmit(updatedUser);
+                  let data =  await sendRequestWithToken(handleSubmit, props, updatedUser );
                   if (data) {
                     dispatch(addCurrentUser(data));
                     setLoading(false);
@@ -401,7 +404,7 @@ const MeInformation = () => {
               className="input-check owner"
               onClick={async () => {
                 setLoading(true);
-                let data = await handleSubmit(updatedUser);
+                let data = await await sendRequestWithToken(handleSubmit, props, updatedUser );
                 if (data) {
                   dispatch(addCurrentUser(data));
                   setLoading(false);
@@ -415,4 +418,4 @@ const MeInformation = () => {
   );
 };
 
-export default MeInformation;
+export default withRouter(MeInformation);

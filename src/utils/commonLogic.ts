@@ -1,12 +1,14 @@
 import { RouteComponentProps } from "react-router-dom";
+import { infoMeInt, sendPostInt} from "./interfaces";
 
 export const sendRequestWithToken = async (
   requestFuncion: any,
   props: RouteComponentProps,
-  id: string
+  functionProp: string | null | infoMeInt | sendPostInt,
+  
 ) => {
   try {
-    let response = await requestFuncion(id);
+    let response = await requestFuncion(functionProp);
     console.log("Common Logic ->", response);
     if (response.ok) {
       if (response.status === 204) {
@@ -38,7 +40,7 @@ export const sendRequestWithToken = async (
           let refreshToken = tokens.refreshToken;
           if (accessToken) localStorage.setItem("token", accessToken);
           if (refreshToken) localStorage.setItem("token2", refreshToken);
-          let resp = await requestFuncion(id);
+          let resp = await requestFuncion(functionProp);
           if (resp.ok) {
             if (resp.status === 204) {
               window.location.reload();

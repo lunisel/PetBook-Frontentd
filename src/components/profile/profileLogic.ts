@@ -4,7 +4,7 @@ import { infoMeInt, userInt } from "../../utils/interfaces";
 export const handleOnChange = (
   e:
     | React.KeyboardEvent<HTMLInputElement>
-    | React.KeyboardEvent<HTMLTextAreaElement>,
+    | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>,
   key: string,
   updatedUser: infoMeInt | null,
   setUpdatedUser: any,
@@ -52,10 +52,11 @@ export const handleSubmit = async (updatedUser: infoMeInt | null) => {
       },
       body: JSON.stringify(updatedUser),
     });
-    if (response.ok) {
+    return response
+    /* if (response.ok) {
       let data = await response.json();
       return data;
-    }
+    } */
   } catch (err) {
     console.log(err);
   }
