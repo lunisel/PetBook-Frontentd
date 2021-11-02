@@ -25,16 +25,7 @@ const SendPosts = (props: RouteComponentProps) => {
         },
         body: JSON.stringify(post!),
       });
-      if (response.ok) {
-        let data = await response.json();
-        console.log("new post ->", data);
-        setNewPost({
-            content:{
-                text: ""
-            }
-        })
-        window.location.reload()
-      }
+      return response
     } catch (err) {
       console.log(err);
     }
@@ -55,9 +46,10 @@ const SendPosts = (props: RouteComponentProps) => {
                 }
             })
         }}
-        onKeyPress={(e: React.KeyboardEvent) => {
+        onKeyPress={async (e: React.KeyboardEvent) => {
             if(e.key === "Enter"){
-              sendRequestWithToken(sendPost,props, newPost)
+              let data = await sendRequestWithToken(sendPost,props, newPost)
+              if(data) window.location.reload()
             }
         }}
       />
