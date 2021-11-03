@@ -31,7 +31,7 @@ const SingleFriend = ({ userId, props }: singleFriendInt) => {
   const fetchUser = async () => {
     try {
       let response = await fetch(
-        `${process.env.REACT_APP_BE_URL}/users/${userId}`
+        `${process.env.REACT_APP_BE_URL}/users/friend/${userId}`
       );
       let data = await response.json();
       if (data) setUser(data);
