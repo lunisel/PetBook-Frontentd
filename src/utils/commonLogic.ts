@@ -16,6 +16,7 @@ export const sendRequestWithToken = async (
         window.location.reload();
       } else {
         let data = await response.json();
+        console.log("Common Logic ->", data);
         return data;
       }
     } else if (response.status === 401) {

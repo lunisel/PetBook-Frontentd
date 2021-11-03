@@ -42,7 +42,7 @@ const SingleFriend = ({ userId, props }: singleFriendInt) => {
 
   useEffect(() => {
     fetchUser();
-  },[]);
+  },[following]);
   return (
     <>
       <img src={user?.avatar} alt="" className="friend-avatar" />
@@ -59,8 +59,7 @@ const SingleFriend = ({ userId, props }: singleFriendInt) => {
               ""
             );
             if (data) {
-              /* dispatch(addCurrentUser(data)); */
-              console.log(data)
+              dispatch(addCurrentUser(data));
             }
           }}
         />
