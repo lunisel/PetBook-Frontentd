@@ -48,18 +48,27 @@ span.searched-user-name{
 }
 
 .add-remove-friend-cont{
-    height: 2rem;
-    width: 2rem;
+    height: 2.5rem;
+    width: 2.5rem;
 }
 
 .add-friend-icon-feed{
     width: 100%;
     height: 100%;
     color: #303233c0;
+    padding: 0 5px;
+    border-radius: 3px;
 }
 
 .remove-friend-icon-feed{
     width: 100%;
     height: 100%;
     color: #f7a072;
+    padding: 0 5px;
+    border-radius: 3px;
+}
+
+.remove-friend-icon-feed:hover, .add-friend-icon-feed:hover{
+    cursor: pointer;
+    background-color: #30323310;
 }

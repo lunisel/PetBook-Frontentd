@@ -11,6 +11,10 @@ export const handleSubmit = async (user: signUpInt) => {
     });
     if (response.ok) {
       let data = await response.json();
+      let accessToken = data.accessToken;
+      let refreshToken = data.refreshToken;
+      localStorage.setItem("token", accessToken);
+      localStorage.setItem("token2", refreshToken);
       return data;
     } else {
       console.log("Something went wrong");

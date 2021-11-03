@@ -18,10 +18,8 @@ export interface signUpInt {
 }
 
 export interface friendsInt {
-  user: {
-    _id: string;
-  };
-  status: Number;
+  user: string
+  _id: string
 }
 
 export interface myOwnerInt {
@@ -32,6 +30,7 @@ export interface myOwnerInt {
 }
 
 export interface userInt {
+  _id?:string
   petName: string;
   nickname?: string;
   username: string;
@@ -43,7 +42,8 @@ export interface userInt {
   birthday?: string;
   city?: string;
   myOwner: myOwnerInt;
-  friends: Array<friendsInt>;
+  followers: Array<friendsInt>;
+  following: Array<friendsInt>;
   refreshToken: string | null;
 }
 

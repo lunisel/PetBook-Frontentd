@@ -5,7 +5,7 @@ import "./feed.css";
 import React, { useState } from "react";
 import { userInt } from "../../utils/interfaces";
 import { Spinner } from "react-bootstrap";
-import {MdOutlinePersonAddAlt, MdOutlinePersonAddDisabled} from "react-icons/md"
+import SingleProfileFeed from "./SingleProfileFeed"
 
 const Feed = ({ history }: RouteComponentProps) => {
   const [query, setQuery] = useState<string | null>(null);
@@ -13,8 +13,6 @@ const Feed = ({ history }: RouteComponentProps) => {
   const [searchedProfiles, setSearchedProfiles] = useState<userInt[] | null>(
     null
   );
-
-  const [friend, setFriend] = useState(false)
 
   return (
     <div className="feed-big-cont">
@@ -30,7 +28,6 @@ const Feed = ({ history }: RouteComponentProps) => {
             setLoading(true);
             let data = await handleSubmitFeed(e, query);
             if (data) {
-              console.log(data);
               setSearchedProfiles(data);
               setLoading(false);
             }
@@ -44,11 +41,7 @@ const Feed = ({ history }: RouteComponentProps) => {
           <>
             {searchedProfiles &&
               searchedProfiles.map((u) => (
-                <div className="user-searched-cont">
-                    <div className="avatar-container-feed"><img src={u.avatar} alt="pet-avatar" className="searched-user-avatar img-fluid" /></div>
-                    <div className="user-name-cont"><span className="searched-user-name">{u.petName}</span><span className="searched-user-username">@{u.username}</span></div>
-                    <div className="add-remove-friend-cont">{friend ? <MdOutlinePersonAddDisabled className="remove-friend-icon-feed" onClick={()=> setFriend(false)}/> : <MdOutlinePersonAddAlt className="add-friend-icon-feed" onClick={()=> setFriend(true)}/>}</div>
-                </div>
+                <SingleProfileFeed user={u}/>
               ))}
           </>
         )}

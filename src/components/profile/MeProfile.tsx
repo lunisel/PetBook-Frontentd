@@ -4,6 +4,7 @@ import { reduxStateInt, userInt } from "../../utils/interfaces";
 import Navbar from "../Navbar";
 import MePosts from "./MePosts";
 import MeInformation from "./MeInformation";
+import MeFriends from "./MeFriends"
 import { GoDeviceCamera, GoCheck } from "react-icons/go";
 import "./profile.css";
 import { useRef, useState } from "react";
@@ -132,6 +133,7 @@ const MePage = ({ history }: RouteComponentProps) => {
         </div>
         {pages.posts && <MePosts />}
         {pages.informations && <MeInformation />}
+        {pages.friends && <MeFriends />}
       </div>
       <Navbar />
     </div>
