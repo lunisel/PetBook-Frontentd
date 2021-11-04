@@ -1,6 +1,10 @@
 export const getAllPosts = async () => {
   try {
-    let response = await fetch(`${process.env.REACT_APP_BE_URL}/posts`);
+    let response = await fetch(`${process.env.REACT_APP_BE_URL}/posts/friends`,{
+      headers:{
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`
+      }
+    });
 
     return response;
   } catch (err) {

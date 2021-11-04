@@ -1,5 +1,5 @@
 import { commentsInt, reduxStateInt } from "../../utils/interfaces";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import { BsThreeDotsVertical, BsAspectRatio } from "react-icons/bs";
 import { VscTrash, VscEdit } from "react-icons/vsc";
 import { FaRegThumbsUp, FaRegComment } from "react-icons/fa";
 import "./post.css";
@@ -18,6 +18,7 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
   const [dropdown, setDropdown] = useState(false);
   const [show, setShow] = useState(false);
   const [comment, setComment] = useState<string>("");
+  const [imgHovered, setImgHovered] = useState(false)
 
   const user = post.user;
   const comments: commentsInt[] = post.comments;
@@ -27,7 +28,7 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
   const y = date.getFullYear();
   const h = date.getHours();
   const min = date.getMinutes();
-  const postTime = `${d}/${m}/${y}\n ${h}:${min}`;
+  const postTime = `${d}/${m}/${y}\n ${h}:${(min < 10 ? "0":"") + min}`;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -41,7 +42,7 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
         <div className="post-user-info-cont">
           <span className="post-user-name">{user.petName}</span>
           <span className="post-user-username">@{user.username}</span>
-          <span className="post-timestamp">{`${d}/${m}/${y}\n ${h}:${min}`}</span>
+          <span className="post-timestamp">{postTime}</span>
         </div>
         {currentUser?.username === user.username ? (
           <BsThreeDotsVertical
@@ -86,13 +87,14 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
         <span className="post-text">{post.content.text}</span>
       </div>
       {post.content.img ? (
-        <div className="img-post-container">
+        <div className="img-post-container" onMouseOver={()=> setImgHovered(true)} onMouseOut={()=> setImgHovered(false)}>
           <img
             src={post.content.img}
             alt="post-cover"
             className="img-post"
             onClick={() => handleShow()}
           />
+          <BsAspectRatio className={imgHovered ? "open-img-post-icon": "d-none"}/>
         </div>
       ) : (
         ""

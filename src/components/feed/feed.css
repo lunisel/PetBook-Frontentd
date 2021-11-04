@@ -5,9 +5,38 @@
     background-color: #f0f0f2;
 }
 
+.search-users-container-feed{
+    width: 100%;
+    padding: 1rem 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input.search-bar-feed{
+    width: 90%;
+    height: 2.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border: transparent 1px solid;
+    border-radius: 1rem;
+}
+
+.search-bar-feed:hover{
+    border: #30323330 1px solid;
+}
+
+.searched-profiles-feed{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .user-searched-cont{
-    width: 50%;
+    width: 100%;
     padding: 0.5rem 2rem;
+    margin: 0.3rem 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -73,5 +102,39 @@ span.searched-user-name{
     background-color: #30323310;
 }
 
+
+
 /* -------------------------------------POSTS FEED------------------------------------------- */
 
+.post-in-your-city-container{
+    width: 100%;
+    padding: 0 8rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .feed-big-cont{
+        padding-left: 0;
+        padding-bottom: 3rem;
+    }
+    .post-in-your-city-container.row{
+        padding: 0 2rem;
+    }
+
+    .search-users-container-feed{
+        padding: 1rem 4rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .feed-big-cont{
+        padding-left: 0;
+        padding-bottom: 3rem;
+    }
+    .post-in-your-city-container.row{
+        padding: 0 0.5rem;
+    }
+
+    .search-users-container-feed{
+        padding: 1rem 1rem;
+    }
+}

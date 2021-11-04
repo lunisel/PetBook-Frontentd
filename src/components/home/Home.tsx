@@ -7,7 +7,9 @@ import { useEffect, useState } from "react";
 import { postInt } from "../../utils/interfaces";
 import SinglePost from "../posts/SinglePost";
 import { Spinner } from "react-bootstrap";
-import {sendRequestWithToken} from "../../utils/commonLogic"
+import { sendRequestWithToken } from "../../utils/commonLogic";
+import OnlineUsers from "./OnlineUsers";
+import { FaPaw } from "react-icons/fa";
 
 const Home = (props: RouteComponentProps) => {
   const [allPosts, setAllPosts] = useState<postInt[] | null>(null);
@@ -30,6 +32,10 @@ const Home = (props: RouteComponentProps) => {
   }, [allPosts]);
   return (
     <div className="home-container">
+      <div className="top-logo-fixed-mobile">
+        <FaPaw className="top-logo-fixed-icon"/>
+        <span className="title-top-logo-fixed">PetBook</span>
+      </div>
       <div className="big-row-container">
         <div className="posts-container">
           <SendPost />
@@ -38,9 +44,16 @@ const Home = (props: RouteComponentProps) => {
           ) : (
             ""
           )}
-          {allPosts && allPosts.map((p) => <SinglePost post={p} />)}
+          {allPosts &&
+            allPosts
+              .sort(function (a: any, b: any) {
+                return +new Date(b.updatedAt) - +new Date(a.updatedAt);
+              })
+              .map((p) => <SinglePost post={p} />)}
         </div>
-        <div className="online-users-container"></div>
+        <div className="online-users-container">
+          <OnlineUsers/>
+        </div>
       </div>
       <Navbar />
     </div>

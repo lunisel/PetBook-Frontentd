@@ -333,9 +333,13 @@ span.me-page-username {
     position: relative;
   }
 
-  /* ---------------------------ME PAGE POSTS QUERY--------------------------------*/
+  .me-posts-container{
+    padding: 2rem 10%;
+    }
+
 }
 
+/* ---------------------------ME PAGE POSTS QUERY--------------------------------*/
 @media screen and (max-height: 750px) {
   .avatar-container {
     width: 9rem;
