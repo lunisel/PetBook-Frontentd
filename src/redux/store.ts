@@ -11,6 +11,7 @@ import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import { reduxStateInt } from "../utils/interfaces";
 import userReducer from "./reducers/user";
+import postReducer from "./reducers/post";
 import { Reducer } from "react";
 
 declare global {
@@ -28,6 +29,9 @@ export const initialState: reduxStateInt = {
   user: {
     currentUser: null,
   },
+  posts: {
+    selectedPost: null,
+  },
 };
 
 const persistConfig = {
@@ -42,6 +46,7 @@ const persistConfig = {
 
 const bigReducer = combineReducers({
   user: userReducer,
+  posts: postReducer,
 }) as Reducer<any, AnyAction>;
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

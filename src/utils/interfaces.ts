@@ -18,8 +18,8 @@ export interface signUpInt {
 }
 
 export interface friendsInt {
-  user: string
-  _id: string
+  user: string;
+  _id: string;
 }
 
 export interface myOwnerInt {
@@ -30,7 +30,7 @@ export interface myOwnerInt {
 }
 
 export interface userInt {
-  _id?:string
+  _id?: string;
   petName: string;
   nickname?: string;
   username: string;
@@ -50,6 +50,9 @@ export interface userInt {
 export interface reduxStateInt {
   user: {
     currentUser: userInt | null;
+  };
+  posts: {
+    selectedPost: postInt | null;
   };
 }
 
@@ -75,34 +78,36 @@ export interface infoMeInt {
   };
 }
 
-export interface commentsInt{
-  refPost: string,
-  user: string,
-  text: string
+export interface commentsInt {
+  _id: string;
+  refPost: string;
+  user: userInt;
+  text: string;
+  createdAt: string;
 }
 
-export interface postInt{
-  _id: string 
-  user: userInt,
-  content:{
-    text: string,
-    img?: string
-  },
-  likes: Array<userInt>,
-  comments: Array<commentsInt>
-  createdAt: Date,
-  updatedAt: Date
+export interface postInt {
+  _id: string;
+  user: userInt;
+  content: {
+    text: string;
+    img?: string;
+  };
+  likes: Array<userInt>;
+  comments: Array<commentsInt>;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-export interface sendPostInt{
-  content:{
-    text: string,
-    img?: string
-  }
+export interface sendPostInt {
+  content: {
+    text: string;
+    img?: string;
+  };
 }
 
 export interface sendRequestWithTokenPropsInt {
-  requestFuncion: any,
-  props: RouteComponentProps,
-  id?: string
+  requestFuncion: any;
+  props: RouteComponentProps;
+  id?: string;
 }

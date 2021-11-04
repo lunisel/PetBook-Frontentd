@@ -4,16 +4,21 @@ import SendPost from "../posts/SendPosts";
 import { getAllPosts } from "../posts/postLogic";
 import "./home.css";
 import { useEffect, useState } from "react";
-import { postInt } from "../../utils/interfaces";
+import { postInt, reduxStateInt } from "../../utils/interfaces";
 import SinglePost from "../posts/SinglePost";
 import { Spinner } from "react-bootstrap";
 import { sendRequestWithToken } from "../../utils/commonLogic";
 import OnlineUsers from "./OnlineUsers";
 import { FaPaw } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Home = (props: RouteComponentProps) => {
   const [allPosts, setAllPosts] = useState<postInt[] | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const postsObject = useSelector((state: reduxStateInt) => state.posts);
+
+  let selectedPost = postsObject.selectedPost;
 
   useEffect(() => {
     const setPosts = async () => {
@@ -25,7 +30,7 @@ const Home = (props: RouteComponentProps) => {
       }
     };
     setPosts();
-  }, []);
+  }, [selectedPost]);
 
   useEffect(() => {
     console.log("Use Effect Home!!", allPosts);
@@ -33,7 +38,7 @@ const Home = (props: RouteComponentProps) => {
   return (
     <div className="home-container">
       <div className="top-logo-fixed-mobile">
-        <FaPaw className="top-logo-fixed-icon"/>
+        <FaPaw className="top-logo-fixed-icon" />
         <span className="title-top-logo-fixed">PetBook</span>
       </div>
       <div className="big-row-container">
@@ -47,12 +52,12 @@ const Home = (props: RouteComponentProps) => {
           {allPosts &&
             allPosts
               .sort(function (a: any, b: any) {
-                return +new Date(b.updatedAt) - +new Date(a.updatedAt);
+                return +new Date(b.createdAt) - +new Date(a.createdAt);
               })
               .map((p) => <SinglePost post={p} />)}
         </div>
         <div className="online-users-container">
-          <OnlineUsers/>
+          <OnlineUsers />
         </div>
       </div>
       <Navbar />

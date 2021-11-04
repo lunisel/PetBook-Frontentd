@@ -8,10 +8,10 @@ import {
 import Login from "./components/login/Login";
 import Signup from "./components/registration/Signup";
 import Home from "./components/home/Home";
-import Feed from "./components/feed/Feed"
-import MePage from "./components/profile/MeProfile"
-import Notes from "./components/notes/Notes"
-import Messages from "./components/messages/Messages"
+import Feed from "./components/feed/Feed";
+import MePage from "./components/profile/MeProfile";
+import Notes from "./components/notes/Notes";
+import Messages from "./components/messages/Messages";
 import "./App.css";
 import { useSelector } from "react-redux";
 import { reduxStateInt, userInt } from "./utils/interfaces";

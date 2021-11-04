@@ -1,25 +1,34 @@
-import { commentsInt, reduxStateInt } from "../../utils/interfaces";
+import { reduxStateInt } from "../../utils/interfaces";
 import { BsThreeDotsVertical, BsAspectRatio } from "react-icons/bs";
 import { VscTrash, VscEdit } from "react-icons/vsc";
 import { FaRegThumbsUp, FaRegComment } from "react-icons/fa";
 import "./post.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from "react";
 import {
   deletePosts,
   postNewComment,
   likePost,
   dislikePost,
+  getTime,
 } from "./postLogic";
 import { Modal } from "react-bootstrap";
 import { RouteComponentProps, withRouter } from "react-router";
 import { sendRequestWithToken } from "../../utils/commonLogic";
 import { Link } from "react-router-dom";
+import SinglePostComments from "./SinglePostComments";
+import { addSelectedPost, deleteSelectedPost } from "../../redux/actions/post";
 
 const SinglePost = ({ post }: any, props: RouteComponentProps) => {
   const currentUser = useSelector(
     (state: reduxStateInt) => state.user.currentUser
   );
+
+  const selectedPost = useSelector(
+    (state: reduxStateInt) => state.posts.selectedPost
+  );
+
+  const dispatch = useDispatch();
 
   const [dropdown, setDropdown] = useState(false);
   const [show, setShow] = useState(false);
@@ -28,17 +37,14 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
   const [liked, setLiked] = useState(false);
 
   const user = post.user;
-  const comments: commentsInt[] = post.comments;
-  const date = new Date(post.createdAt);
-  const d = date.getDate();
-  const m = date.getMonth() + 1;
-  const y = date.getFullYear();
-  const h = date.getHours();
-  const min = date.getMinutes();
-  const postTime = `${d}/${m}/${y}\n ${h}:${(min < 10 ? "0" : "") + min}`;
+  const postTime = getTime(post.createdAt);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
+  const handleShow = () => {
+    dispatch(addSelectedPost(post));
+    if (selectedPost) setShow(true);
+  };
 
   return (
     <div className="single-post-container">
@@ -83,12 +89,7 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
                 Delete
               </span>
             </div>
-            <div
-              className="post-list-container"
-              onClick={() => {
-                handleShow();
-              }}
-            >
+            <div className="post-list-container" onClick={() => handleShow()}>
               <span className="dropdown-link-post">
                 <VscEdit className="post-trash-icon mr-3" />
                 Modify
@@ -122,7 +123,23 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
         ""
       )}
       {post.likes.length !== 0 ? (
-        <div className="post-likes-container">{post.likes.length} Likes</div>
+        liked ? (
+          post.likes.includes(currentUser?._id?.toString()) ? (
+            <div className="post-likes-container">
+              {post.likes.length} Likes
+            </div>
+          ) : (
+            <div className="post-likes-container">
+              {post.likes.length + 1} Likes
+            </div>
+          )
+        ) : (
+          <div className="post-likes-container">{post.likes.length} Likes</div>
+        )
+      ) : liked ? (
+        <div className="post-likes-container">
+          {post.likes.length + 1} Likes
+        </div>
       ) : (
         ""
       )}
@@ -192,13 +209,7 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
           ) : (
             ""
           )}
-          <div
-            className={
-              post.content.img
-                ? "modal-post-container with-left-border"
-                : "modal-post-container"
-            }
-          >
+          <div className="modal-post-container">
             <div className="modal-user-info-container">
               <div className="post-avatar-container mr-3">
                 <img
@@ -310,18 +321,15 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
                       post._id,
                       comment
                     );
-                    if (data) setComment("");
+                    if (data) {
+                      dispatch(addSelectedPost(data));
+                      setComment("");
+                    }
                   }
                 }}
               />
 
-              {comments.length !== 0
-                ? comments.map((c) => (
-                    <div className="modal-single-comment-cont">
-                      <span className="modal-comment-text">{c.text}</span>
-                    </div>
-                  ))
-                : ""}
+              <SinglePostComments />
             </div>
           </div>
         </Modal.Body>
