@@ -5,10 +5,16 @@ import { FaRegThumbsUp, FaRegComment } from "react-icons/fa";
 import "./post.css";
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
-import { deletePosts, postNewComment } from "./postLogic";
+import {
+  deletePosts,
+  postNewComment,
+  likePost,
+  dislikePost,
+} from "./postLogic";
 import { Modal } from "react-bootstrap";
 import { RouteComponentProps, withRouter } from "react-router";
 import { sendRequestWithToken } from "../../utils/commonLogic";
+import { Link } from "react-router-dom";
 
 const SinglePost = ({ post }: any, props: RouteComponentProps) => {
   const currentUser = useSelector(
@@ -18,17 +24,18 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
   const [dropdown, setDropdown] = useState(false);
   const [show, setShow] = useState(false);
   const [comment, setComment] = useState<string>("");
-  const [imgHovered, setImgHovered] = useState(false)
+  const [imgHovered, setImgHovered] = useState(false);
+  const [liked, setLiked] = useState(false);
 
   const user = post.user;
   const comments: commentsInt[] = post.comments;
-  const date = new Date(post.updatedAt);
+  const date = new Date(post.createdAt);
   const d = date.getDate();
   const m = date.getMonth() + 1;
   const y = date.getFullYear();
   const h = date.getHours();
   const min = date.getMinutes();
-  const postTime = `${d}/${m}/${y}\n ${h}:${(min < 10 ? "0":"") + min}`;
+  const postTime = `${d}/${m}/${y}\n ${h}:${(min < 10 ? "0" : "") + min}`;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -40,7 +47,16 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
           <img src={user.avatar} alt="pet-avatar" className="post-avatar" />
         </div>
         <div className="post-user-info-cont">
-          <span className="post-user-name">{user.petName}</span>
+          <Link
+            to={
+              user.username === currentUser?.username
+                ? `/me`
+                : `/profile/${user.username}`
+            }
+            className="post-user-name"
+          >
+            {user.petName}
+          </Link>
           <span className="post-user-username">@{user.username}</span>
           <span className="post-timestamp">{postTime}</span>
         </div>
@@ -87,14 +103,20 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
         <span className="post-text">{post.content.text}</span>
       </div>
       {post.content.img ? (
-        <div className="img-post-container" onMouseOver={()=> setImgHovered(true)} onMouseOut={()=> setImgHovered(false)}>
+        <div
+          className="img-post-container"
+          onMouseOver={() => setImgHovered(true)}
+          onMouseOut={() => setImgHovered(false)}
+        >
           <img
             src={post.content.img}
             alt="post-cover"
             className="img-post"
             onClick={() => handleShow()}
           />
-          <BsAspectRatio className={imgHovered ? "open-img-post-icon": "d-none"}/>
+          <BsAspectRatio
+            className={imgHovered ? "open-img-post-icon" : "d-none"}
+          />
         </div>
       ) : (
         ""
@@ -105,9 +127,49 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
         ""
       )}
       <div className="post-like-comment-buttons-cont">
-        <div className="post-like-comment-btn">
-          <FaRegThumbsUp className="like-comment-icon" />
-          Like
+        <div
+          className={
+            post.likes.includes(currentUser?._id?.toString()) || liked
+              ? "post-like-comment-btn active"
+              : "post-like-comment-btn"
+          }
+          onClick={
+            post.likes.includes(currentUser?._id?.toString()) || liked
+              ? async () => {
+                  let data = await sendRequestWithToken(
+                    dislikePost,
+                    props,
+                    post._id,
+                    ""
+                  );
+                  if (data) {
+                    setLiked(false);
+                  }
+                }
+              : async () => {
+                  let data = await sendRequestWithToken(
+                    likePost,
+                    props,
+                    post._id,
+                    ""
+                  );
+                  if (data) {
+                    setLiked(true);
+                  }
+                }
+          }
+        >
+          {post.likes.includes(currentUser?._id?.toString()) || liked ? (
+            <>
+              <FaRegThumbsUp className="like-comment-icon active" />
+              Liked
+            </>
+          ) : (
+            <>
+              <FaRegThumbsUp className="like-comment-icon" />
+              Like
+            </>
+          )}
         </div>
 
         <div className="post-like-comment-btn" onClick={() => handleShow()}>
@@ -147,7 +209,16 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
               </div>
 
               <div className="post-user-info-cont">
-                <span className="post-user-name">{post.user.petName}</span>
+                <Link
+                  to={
+                    user.username === currentUser?.username
+                      ? `/me`
+                      : `/profile/${user.username}`
+                  }
+                  className="post-user-name"
+                >
+                  {user.petName}
+                </Link>
                 <span className="post-user-username">
                   @{post.user.username}
                 </span>
@@ -168,9 +239,49 @@ const SinglePost = ({ post }: any, props: RouteComponentProps) => {
             )}
 
             <div className="post-like-comment-buttons-cont">
-              <div className="post-like-comment-btn">
-                <FaRegThumbsUp className="like-comment-icon" />
-                Like
+              <div
+                className={
+                  post.likes.includes(currentUser?._id?.toString()) || liked
+                    ? "post-like-comment-btn active"
+                    : "post-like-comment-btn"
+                }
+                onClick={
+                  post.likes.includes(currentUser?._id?.toString()) || liked
+                    ? async () => {
+                        let data = await sendRequestWithToken(
+                          dislikePost,
+                          props,
+                          post._id,
+                          ""
+                        );
+                        if (data) {
+                          setLiked(false);
+                        }
+                      }
+                    : async () => {
+                        let data = await sendRequestWithToken(
+                          likePost,
+                          props,
+                          post._id,
+                          ""
+                        );
+                        if (data) {
+                          setLiked(true);
+                        }
+                      }
+                }
+              >
+                {post.likes.includes(currentUser?._id?.toString()) || liked ? (
+                  <>
+                    <FaRegThumbsUp className="like-comment-icon active" />
+                    Liked
+                  </>
+                ) : (
+                  <>
+                    <FaRegThumbsUp className="like-comment-icon" />
+                    Like
+                  </>
+                )}
               </div>
 
               <div

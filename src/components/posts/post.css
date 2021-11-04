@@ -42,6 +42,12 @@
   line-height: 1.1rem;
 }
 
+.post-user-name:hover{
+  cursor: pointer;
+  color: #303233d0;
+  text-decoration: underline;
+}
+
 .post-user-username {
   font-size: 0.8rem;
   font-weight: 600;
@@ -152,6 +158,12 @@ img.img-post:hover {
     transition: background-color 200ms;
 }
 
+.post-like-comment-btn.active{
+  color: #f7a072;
+  font-weight: 600;
+  background-color: #30323308;
+}
+
 .post-like-comment-btn:hover{
     background-color: #30323310;
     cursor: pointer;
@@ -163,8 +175,18 @@ img.img-post:hover {
     color: #303233d0;
 }
 
+.like-comment-icon.active{
+  color: #f7a072;
+}
+
 .post-likes-container{
     padding-bottom: 0.5rem;
+}
+
+.post-likes-container{
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #303233;
 }
 
 /* -------------------------------------------- MODAL CSS----------------------------------------- */
