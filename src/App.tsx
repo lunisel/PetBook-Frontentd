@@ -16,6 +16,7 @@ import "./App.css";
 import { useSelector } from "react-redux";
 import { reduxStateInt, userInt } from "./utils/interfaces";
 import "bootstrap/dist/css/bootstrap.min.css";
+import FriendsProfile from "./components/profile/FriendsProfile";
 
 function App() {
   const user: userInt | null = useSelector(
@@ -98,6 +99,18 @@ function App() {
               path="/messages"
               render={(routerProps: RouteComponentProps) => (
                 <Messages {...routerProps} />
+              )}
+            />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route path="/profile/:username">
+          {user ? (
+            <Route
+              path="/profile/:username"
+              render={(routerProps: RouteComponentProps) => (
+                <FriendsProfile {...routerProps} />
               )}
             />
           ) : (

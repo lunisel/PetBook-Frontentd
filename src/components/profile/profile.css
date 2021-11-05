@@ -56,7 +56,7 @@ img.avatar-me-page {
   transition: opacity 1sec;
 }
 
-.check-icon-avatar{
+.check-icon-avatar {
   height: 2.3rem;
   width: auto;
   padding: 0.5rem;
@@ -333,10 +333,9 @@ span.me-page-username {
     position: relative;
   }
 
-  .me-posts-container{
+  .me-posts-container {
     padding: 2rem 10%;
-    }
-
+  }
 }
 
 /* ---------------------------ME PAGE POSTS QUERY--------------------------------*/
@@ -352,11 +351,11 @@ span.me-page-username {
   }
 }
 
-@media screen and (max-width: 650px){
-  .me-posts-container{
-  padding: 2rem 5%;
+@media screen and (max-width: 650px) {
+  .me-posts-container {
+    padding: 2rem 5%;
   }
-  .form-container-home{
+  .form-container-home {
     width: 100%;
     margin-bottom: 0;
   }
@@ -364,7 +363,7 @@ span.me-page-username {
 
 /* ------------------------------------------------ME FRIENDS--------------------------------------- */
 
-.friends-cont-big{
+.friends-cont-big {
   width: 100%;
   height: fit-content;
   background-color: #f0f0f2;
@@ -372,7 +371,7 @@ span.me-page-username {
   display: flex;
 }
 
-.following-followers-cont{
+.following-followers-cont {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -380,7 +379,8 @@ span.me-page-username {
   padding: 1rem;
 }
 
-.following-content-container, .followers-content-container{
+.following-content-container,
+.followers-content-container {
   display: flex;
   width: 80%;
   align-items: center;
@@ -390,15 +390,34 @@ span.me-page-username {
   border-radius: 10px;
 }
 
-.friend-avatar{
+.friend-avatar {
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
   margin-right: 1rem;
 }
 
-.friend-username{
+.friend-username {
   font-weight: 600;
   color: #303233;
   width: 100%;
+}
+
+/* -------------------------------------FRIENDS PROFILE CSS----------------------------- */
+
+.big-friend-profile-container {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+
+.friend-profile-cont {
+  width: 100%;
+  height: 100vh;
+  padding-left: 15%;
+}
+
+.hero-profile {
+  height: 50%;
+  background-color: #f0f0f2;
 }
