@@ -94,54 +94,6 @@
   }
 }
 
-/* ------------------------SENDPOSTS---------------------- */
-
-.form-container-home {
-  width: 90%;
-  height: 4.5rem;
-  margin: auto;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  padding: 0.8rem;
-  background: rgba(119, 191, 166, 0.13);
-  border-radius: 10px;
-}
-
-.send-post-img-cont {
-  height: 3.5rem;
-  width: 4rem;
-  margin-right: 1rem;
-}
-
-img.img-profile {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  background-color: #f0f0f2;
-  padding: 5px;
-}
-
-input.input-send-post.form-control {
-  border-radius: 50vh;
-}
-
-.add-pic-icon {
-  width: 3.5rem;
-  height: 3rem;
-  color: rgba(119, 191, 166, 0.6);
-  font-size: 2rem;
-  margin-left: 1rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 5px;
-}
-
-.add-pic-icon:hover {
-  background-color: rgba(119, 191, 166, 0.1);
-}
-
 /* -------------------------------ONLINE USERS--------------------------------------- */
 
 .online-users-container {

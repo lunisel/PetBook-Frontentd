@@ -54,6 +54,7 @@ const MePage = (props: RouteComponentProps) => {
     <div className="me-page-big-cont">
       <div className="profile-container">
         <div className="hero-profile">
+          <div className="hero-profile-content-cont">
           <div
             className="avatar-container"
             onClick={() => openFileDialog()}
@@ -137,6 +138,7 @@ const MePage = (props: RouteComponentProps) => {
             >
               Photos
             </span>
+          </div>
           </div>
         </div>
         {pages.posts && <MePosts user={user} routerProps={props} />}

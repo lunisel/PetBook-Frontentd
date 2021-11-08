@@ -53,7 +53,7 @@ const FriendsProfile = (props: RouteComponentProps) => {
             <HeroSection
               pages={pages}
               setPages={setPages}
-              props={props}
+              routerProps={props}
               user={user}
             />
             {pages.posts && <MePosts user={user} routerProps={props} />}

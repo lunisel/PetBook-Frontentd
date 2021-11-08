@@ -127,3 +127,37 @@ export const getTime = (createdAt: string) => {
   const actualTime = `${d}/${m}/${y}\n ${h}:${(min < 10 ? "0" : "") + min}`;
   return actualTime;
 };
+
+export const addImgToPost = async (
+  e: React.ChangeEvent<HTMLInputElement>,
+  setPreview: any,
+  setNewPost: any,
+  newPost: any
+) => {
+  const files = e.target.files;
+  const data = new FormData();
+  data.append("file", files![0]);
+  data.append("upload_preset", "postImg");
+
+  try {
+    let response = await fetch(
+      "https://api.cloudinary.com/v1_1/lunisel/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    if (response.ok) {
+      let file = await response.json();
+      setPreview(file.secure_url);
+      setNewPost({
+        content:{
+          ...newPost.content,
+          img: file.secure_url
+        }
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
