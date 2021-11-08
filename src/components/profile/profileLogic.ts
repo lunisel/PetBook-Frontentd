@@ -54,57 +54,53 @@ export const handleSubmit = async (updatedUser: infoMeInt | null) => {
       body: JSON.stringify(updatedUser),
     });
     return response;
-    /* if (response.ok) {
-      let data = await response.json();
-      return data;
-    } */
   } catch (err) {
     console.log(err);
   }
 };
 
-export const handleFileUpload = async (
-  e: React.ChangeEvent<HTMLInputElement>
-) => {
+export const updateOwnerAvatar = async (updatedUser: infoMeInt | null) => {
   try {
-    console.log("FILE ON CHANGE");
-    console.log(e.target.files![0]);
-
-    const formData = new FormData();
-    formData.append("file", e.target.files![0]);
-    formData.append("upload_preset", "avatar upload");
-
-    Axios.post(
-      `${process.env.REACT_APP_BE_URL}/users/me/avatar`,
-      {
-        formData,
+    let response = await fetch(`${process.env.REACT_APP_BE_URL}/users/me/owner/avatar`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
       },
-      {
-        headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
-      }
-    ).then((response) => console.log(response));
+      body: JSON.stringify(updatedUser),
+    });
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-    /* 
-    const data = new FormData();
-    data.append("file", e.target.files![0]); */
-    /* let response = await fetch(
-      `${process.env.REACT_APP_BE_URL}/users/me/avatar`,
+export const changeImg = async (
+  e: React.ChangeEvent<HTMLInputElement>,
+  setPreview: any,
+  setUpdatedUser: any,
+  key: string
+) => {
+  const files = e.target.files;
+  const data = new FormData();
+  data.append("file", files![0]);
+  data.append("upload_preset", "avatarUpload");
+
+  try {
+    let response = await fetch(
+      "https://api.cloudinary.com/v1_1/lunisel/image/upload",
       {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
-        body: files[0],
+        body: data,
       }
     );
     if (response.ok) {
-      let data = await response.json()
-      return data
-    } else {
-      console.log("Something went wrong uploading the avatar :(");
-    } */
+      let file = await response.json();
+      setUpdatedUser({
+        [key]: file.secure_url,
+      });
+      setPreview(file.secure_url);
+    }
   } catch (err) {
     console.log(err);
   }
@@ -123,3 +119,16 @@ export const fetchProfileFromUsername = async (username: string) => {
     console.log(err);
   }
 };
+
+
+export const getPostsFromSingleUser = async (userId : string | undefined) => {
+  try{
+    let response = await fetch(
+      `${process.env.REACT_APP_BE_URL}/posts/${userId}`
+    );
+    if(response.ok){
+      let data = await response.json()
+      return data
+    }
+  }catch(err){console.log(err)}
+}

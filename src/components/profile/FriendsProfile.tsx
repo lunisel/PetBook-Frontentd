@@ -4,6 +4,8 @@ import { RouteComponentProps } from "react-router";
 import { reduxStateInt, userInt } from "../../utils/interfaces";
 import Navbar from "../Navbar";
 import HeroSection from "./HeroSection";
+import MeFriends from "./MeFriends";
+import MePosts from "./MePosts";
 import { fetchProfileFromUsername } from "./profileLogic";
 
 const FriendsProfile = (props: RouteComponentProps) => {
@@ -11,8 +13,16 @@ const FriendsProfile = (props: RouteComponentProps) => {
     (state: reduxStateInt) => state.user.currentUser
   );
 
+  const [newAvatar, setNewAvatar] = useState<any>(null);
+  const [avatarPreview, setPreview] = useState<any>(null);
   const [user, setUser] = useState<userInt | null>(null);
-
+  const [pages, setPages] = useState({
+    posts: true,
+    informations: false,
+    friends: false,
+    photos: false,
+  });
+  
   let username = props.location.pathname;
   useEffect(() => {
     const fetchProfile = async () => {
@@ -23,16 +33,6 @@ const FriendsProfile = (props: RouteComponentProps) => {
   }, []);
 
   const dispatch = useDispatch();
-
-  const [newAvatar, setNewAvatar] = useState<any>(null);
-  const [avatarPreview, setPreview] = useState<any>(null);
-
-  const [pages, setPages] = useState({
-    posts: true,
-    informations: false,
-    friends: false,
-    photos: false,
-  });
 
   const setImgPreview = () => {
     const reader = new FileReader();
@@ -46,16 +46,22 @@ const FriendsProfile = (props: RouteComponentProps) => {
     <div className="big-friend-profile-container">
       <Navbar />
       <div className="friend-profile-cont">
-        {user && console.log(user)}
         {user && (
-          <HeroSection
-            pages={pages}
-            setPages={setPages}
-            props={props}
-            user={user}
-          />
+          <>
+            <HeroSection
+              pages={pages}
+              setPages={setPages}
+              props={props}
+              user={user}
+            />
+            {pages.posts && <MePosts user={user} routerProps={props} />}
+            {pages.friends && <MeFriends user={user} routerProps={props}/>}
+          </>
         )}
       </div>
+
+      {/* {pages.informations && <MeInformation />}
+       */}
     </div>
   );
 };

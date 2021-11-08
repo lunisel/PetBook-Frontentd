@@ -8,7 +8,7 @@
   background-color: #f0f0f2;
 }
 
-.top-logo-fixed-mobile{
+.top-logo-fixed-mobile {
   width: 100%;
   padding: 0.5rem;
   display: flex;
@@ -20,21 +20,20 @@
   z-index: 100;
 }
 
-@media (min-width: 1000px){
-  .top-logo-fixed-mobile{
+@media (min-width: 1000px) {
+  .top-logo-fixed-mobile {
     display: none;
-    
   }
 }
 
-.top-logo-fixed-icon{
+.top-logo-fixed-icon {
   color: white;
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.5rem;
 }
 
-.title-top-logo-fixed{
+.title-top-logo-fixed {
   color: white;
   font-size: 1.5rem;
   font-family: "Pacifico", cursive;
@@ -58,17 +57,17 @@
   align-items: center;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
   .big-row-container {
     padding-top: 2.5rem;
   }
-  .posts-container{
+  .posts-container {
     padding-right: 26%;
   }
 }
 
-@media (max-width: 600px){
-  .posts-container{
+@media (max-width: 600px) {
+  .posts-container {
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 4rem;
@@ -109,10 +108,17 @@
   border-radius: 10px;
 }
 
+.send-post-img-cont {
+  height: 3.5rem;
+  width: 4rem;
+  margin-right: 1rem;
+}
+
 img.img-profile {
   height: 100%;
+  width: 100%;
+  object-fit: cover;
   border-radius: 50%;
-  margin-right: 1rem;
   background-color: #f0f0f2;
   padding: 5px;
 }
@@ -121,52 +127,52 @@ input.input-send-post.form-control {
   border-radius: 50vh;
 }
 
-.add-pic-icon{
-    width: 3.5rem;
-    height: 3rem;
-    color: rgba(119, 191, 166, 0.600);
-    font-size: 2rem;
-    margin-left: 1rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 5px;
+.add-pic-icon {
+  width: 3.5rem;
+  height: 3rem;
+  color: rgba(119, 191, 166, 0.6);
+  font-size: 2rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
-.add-pic-icon:hover{
-    background-color: rgba(119, 191, 166, 0.100);
+.add-pic-icon:hover {
+  background-color: rgba(119, 191, 166, 0.1);
 }
 
 /* -------------------------------ONLINE USERS--------------------------------------- */
 
-.online-users-container{
+.online-users-container {
   padding: 2rem 4rem;
 }
 
-@media (max-width: 1500px){
-  .online-users-container{
+@media (max-width: 1500px) {
+  .online-users-container {
     padding: 2rem 2.5rem;
   }
 }
 
-@media (max-width: 1200px){
-  .online-users-container{
+@media (max-width: 1200px) {
+  .online-users-container {
     padding: 2rem 1.5rem;
   }
 }
 
-@media (max-width: 1000px){
-  .online-users-container{
+@media (max-width: 1000px) {
+  .online-users-container {
     padding: 2rem 0.5rem;
   }
 }
 
-@media (max-width: 600px){
-  .online-users-container{
+@media (max-width: 600px) {
+  .online-users-container {
     display: none;
   }
 }
 
-.online-users-content{
+.online-users-content {
   width: 100%;
   max-height: 30rem;
   overflow: scroll;
@@ -192,7 +198,7 @@ input.input-send-post.form-control {
   background: transparent;
 }
 
-.online-users-container-little{
+.online-users-container-little {
   margin: 1rem 0;
   color: #303233;
   width: 100%;
@@ -201,7 +207,7 @@ input.input-send-post.form-control {
   align-items: center;
 }
 
-.single-online-user-cont{
+.single-online-user-cont {
   width: 100%;
   height: 2.5rem;
   padding: 0.5rem 10%;
@@ -209,7 +215,7 @@ input.input-send-post.form-control {
   align-items: center;
 }
 
-img.online-user-avatar{
+img.online-user-avatar {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -217,7 +223,7 @@ img.online-user-avatar{
   margin-right: 1rem;
 }
 
-.name-of-online-user{
+.name-of-online-user {
   color: #30323390;
   font-size: 1rem;
   font-weight: 600;

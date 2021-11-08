@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { infoMeInt, reduxStateInt } from "../../utils/interfaces";
 import { FaCheck } from "react-icons/fa";
 import { GoDeviceCamera } from "react-icons/go";
-import React, { useEffect, useState } from "react";
-import { handleOnChange } from "./profileLogic";
-import { handleSubmit } from "../profile/profileLogic";
+import React, { useEffect, useRef, useState } from "react";
+import { handleOnChange, updateOwnerAvatar } from "./profileLogic";
+import { handleSubmit, changeImg } from "../profile/profileLogic";
 import { addCurrentUser } from "../../redux/actions/user";
 import { Spinner } from "react-bootstrap";
 import {sendRequestWithToken} from "../../utils/commonLogic"
@@ -13,15 +13,28 @@ import { RouteComponentProps, withRouter } from "react-router";
 const MeInformation = (props: RouteComponentProps) => {
   const user = useSelector((state: reduxStateInt) => state.user.currentUser);
 
+  const inputFile = useRef<any>(null);
+
+  const [imgHovered, setImgHovered] = useState(false) 
+
   const dispatch = useDispatch();
 
   const [updatedUser, setUpdatedUser] = useState<infoMeInt | null>(null);
+  const [avatarPreview, setPreview] = useState<string | null>(null)
 
   const [loading, setLoading] = useState(false);
 
-  useEffect(()=>{
+  const openFileDialog = () =>{
+    inputFile.current.click();
+  }
 
-  }, [user])
+  useEffect(()=>{
+    const updateAvatar = async () => {
+      let data = await sendRequestWithToken(updateOwnerAvatar, props, updatedUser, "")
+      if(data)dispatch(addCurrentUser(data))
+    }
+    updateAvatar()
+  },[avatarPreview !== null])
 
   return (
     <div className="me-information-container">
@@ -280,13 +293,22 @@ const MeInformation = (props: RouteComponentProps) => {
       <div className="divider-me-info"></div>
 
       <div className="me-my-owner-info-container">
-        <div className="avatar-owner-container">
+        <div className="avatar-owner-container" onClick={() => openFileDialog()} onMouseOver={()=> setImgHovered(true)} onMouseOut={()=> setImgHovered(false)}>
+        <input
+              type="file"
+              id="file"
+              ref={inputFile}
+              style={{ display: "none" }}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                changeImg(e, setPreview, setUpdatedUser, "ownerAvatar")
+              }}
+            />
           <img
-            src={user?.avatar}
+            src={avatarPreview ? avatarPreview : user?.myOwner.ownerAvatar}
             alt="pet-avatar"
-            className="avatar-me-page img-fluid"
+            className="owner-avatar-me-page"
           />
-          <GoDeviceCamera className="camera-icon owner" />
+          {<GoDeviceCamera className="camera-icon owner" />}
         </div>
         <div className="info-content-container owner">
           <span className="info-name" id="info-name-bio">

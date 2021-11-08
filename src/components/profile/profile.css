@@ -33,12 +33,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 img.avatar-me-page {
   width: 90%;
   height: 90%;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .camera-icon {
@@ -50,10 +52,8 @@ img.avatar-me-page {
   background-color: #303233;
   border-radius: 50%;
   position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  opacity: 0;
-  transition: opacity 1sec;
+  right: 5%;
+  bottom: 5%;
 }
 
 .check-icon-avatar {
@@ -218,16 +218,20 @@ span.me-page-username {
 }
 
 .avatar-owner-container {
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 1.5rem 0.8rem 2rem;
+  width: 10rem;
+  height: 10rem;
   position: relative;
+  margin: 1rem 0;
+  cursor: pointer;
 }
 
-.avatar-me-page {
-  height: 5rem;
+img.owner-avatar-me-page{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 0.2rem;
+  background-color: #77bfa6;
 }
 
 .info-content-container.owner {
@@ -243,7 +247,8 @@ span.me-page-username {
 }
 
 .camera-icon.owner {
-  right: 1.5rem;
+  right: 5%;
+  bottom: 5%;
   height: 2rem;
 }
 
@@ -409,6 +414,7 @@ span.me-page-username {
   width: 100vw;
   min-height: 100vh;
   position: relative;
+  background-color: #f0f0f2;
 }
 
 .friend-profile-cont {

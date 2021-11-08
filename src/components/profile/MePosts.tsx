@@ -1,16 +1,26 @@
 import SendPosts from "../posts/SendPosts";
 import SinglePost from "../posts/SinglePost";
 import { getMePosts } from "../posts/postLogic";
+import {getPostsFromSingleUser} from "./profileLogic"
 import { useEffect, useState } from "react";
-import { postInt, reduxStateInt } from "../../utils/interfaces";
+import { postInt, reduxStateInt, userInt } from "../../utils/interfaces";
 import { Spinner } from "react-bootstrap";
 import { sendRequestWithToken } from "../../utils/commonLogic";
-import { RouteComponentProps, withRouter } from "react-router";
+import { RouteComponentProps } from "react-router";
 import { useSelector } from "react-redux";
 
-const MePosts = (props: RouteComponentProps) => {
+interface mePostPropsInt {
+  user: userInt | null;
+  routerProps: RouteComponentProps;
+}
+
+const MePosts = (props: mePostPropsInt) => {
   const [allPosts, setAllPosts] = useState<postInt[] | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const currentUser = useSelector(
+    (state: reduxStateInt) => state.user.currentUser
+  );
 
   const postsObject = useSelector((state: reduxStateInt) => state.posts);
 
@@ -19,10 +29,23 @@ const MePosts = (props: RouteComponentProps) => {
   useEffect(() => {
     const setPosts = async () => {
       setLoading(true);
-      let posts = await sendRequestWithToken(getMePosts, props, "", "");
-      if (posts) {
-        setAllPosts(posts);
-        setLoading(false);
+      if (props.user === currentUser) {
+        let posts = await sendRequestWithToken(
+          getMePosts,
+          props.routerProps,
+          "",
+          ""
+        );
+        if (posts) {
+          setAllPosts(posts);
+          setLoading(false);
+        }
+      } else {
+        let posts = await getPostsFromSingleUser(props.user?._id)
+        if(posts){
+          setAllPosts(posts);
+          setLoading(false);
+        }
       }
     };
     setPosts();
@@ -33,7 +56,7 @@ const MePosts = (props: RouteComponentProps) => {
   }, [allPosts]);
   return (
     <div className="me-posts-container">
-      <SendPosts />
+      {props.user === currentUser ? <SendPosts /> : ""}
       {loading ? (
         <Spinner animation="border" className="post-loading-spinner" />
       ) : (
@@ -44,4 +67,4 @@ const MePosts = (props: RouteComponentProps) => {
   );
 };
 
-export default withRouter(MePosts);
+export default MePosts;

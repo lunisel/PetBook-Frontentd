@@ -9,6 +9,7 @@ import { RouteComponentProps, withRouter } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentUser } from "../../redux/actions/user";
 import { friendsInt, reduxStateInt } from "../../utils/interfaces";
+import { Link } from "react-router-dom";
 
 const SingleProfileFeed = (componentProp: any, props: RouteComponentProps) => {
 
@@ -33,11 +34,20 @@ const SingleProfileFeed = (componentProp: any, props: RouteComponentProps) => {
         />
       </div>
       <div className="user-name-cont">
-        <span className="searched-user-name">{user.petName}</span>
+      <Link
+            to={
+              user.username === currentUser?.username
+                ? `/me`
+                : `/profile/${user.username}`
+            }
+            className="searched-user-name"
+          >
+            {user.petName}
+          </Link>
         <span className="searched-user-username">@{user.username}</span>
       </div>
       <div className="add-remove-friend-cont">
-        {filter || friend ? (
+        {user._id === currentUser?._id ? "" : (filter || friend ? (
           <MdOutlinePersonAddDisabled
             className="remove-friend-icon-feed"
             onClick={() => setFriend(false)}
@@ -53,7 +63,7 @@ const SingleProfileFeed = (componentProp: any, props: RouteComponentProps) => {
                 }
             }}
           />
-        )}
+        ))}
       </div>
     </div>
   );

@@ -3,17 +3,17 @@ import { Form } from "react-bootstrap";
 import { FaPhotoVideo } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { reduxStateInt, sendPostInt } from "../../utils/interfaces";
-import {sendRequestWithToken} from "../../utils/commonLogic"
+import { sendRequestWithToken } from "../../utils/commonLogic";
 import { RouteComponentProps, withRouter } from "react-router";
 
 const SendPosts = (props: RouteComponentProps) => {
   const user = useSelector((state: reduxStateInt) => state.user.currentUser);
 
   const [newPost, setNewPost] = useState<sendPostInt>({
-    content:{
-        text: ""
-    }
-  })
+    content: {
+      text: "",
+    },
+  });
 
   const sendPost = async (post: sendPostInt) => {
     try {
@@ -25,7 +25,7 @@ const SendPosts = (props: RouteComponentProps) => {
         },
         body: JSON.stringify(post!),
       });
-      return response
+      return response;
     } catch (err) {
       console.log(err);
     }
@@ -33,24 +33,27 @@ const SendPosts = (props: RouteComponentProps) => {
 
   return (
     <div className="form-container-home">
-      <img src={user?.avatar} alt="paw" className="img-profile" />
+      <div className="send-post-img-cont">
+        <img src={user?.avatar} alt="paw" className="img-profile" />
+      </div>
+
       <Form.Control
         type="text"
         placeholder="Write something..."
         className="input-send-post"
         value={newPost?.content.text}
-        onChange={(e : React.ChangeEvent<HTMLInputElement>) => {
-            setNewPost({
-                content:{
-                    text: e.target.value
-                }
-            })
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          setNewPost({
+            content: {
+              text: e.target.value,
+            },
+          });
         }}
         onKeyPress={async (e: React.KeyboardEvent) => {
-            if(e.key === "Enter"){
-              let data = await sendRequestWithToken(sendPost,props, newPost, "")
-              if(data) window.location.reload()
-            }
+          if (e.key === "Enter") {
+            let data = await sendRequestWithToken(sendPost, props, newPost, "");
+            if (data) window.location.reload();
+          }
         }}
       />
       <FaPhotoVideo className="add-pic-icon" />

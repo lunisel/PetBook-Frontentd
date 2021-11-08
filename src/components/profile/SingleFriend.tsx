@@ -47,7 +47,7 @@ const SingleFriend = ({ userId, props }: singleFriendInt) => {
     <>
       <img src={user?.avatar} alt="" className="friend-avatar" />
       <div className="friend-username">@{user?.username}</div>
-      {filter ? (
+      {user?._id === currentUser?._id ? "" : (filter ? (
         <MdOutlinePersonAddDisabled
           className="remove-friend-icon-feed mr-3"
           style={{ height: "2.5rem", width: "2.5rem" }}
@@ -79,7 +79,7 @@ const SingleFriend = ({ userId, props }: singleFriendInt) => {
             }
           }}
         />
-      )}
+      ))}
     </>
   );
 };

@@ -70,10 +70,14 @@ span.searched-user-username{
     font-weight: 600;
 }
 
-span.searched-user-name{
+a.searched-user-name{
     font-size: 1rem;
     color: #303233;
     font-weight: 600;
+}
+
+a.searched-user-name:hover{
+    color: #303233e0;
 }
 
 .add-remove-friend-cont{
