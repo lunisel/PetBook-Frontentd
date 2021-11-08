@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Form } from "react-bootstrap";
-import { FaPhotoVideo } from "react-icons/fa";
+import { FaCheck, FaPhotoVideo } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { reduxStateInt, sendPostInt } from "../../utils/interfaces";
 import { sendRequestWithToken } from "../../utils/commonLogic";
@@ -87,7 +87,19 @@ const SendPosts = (props: RouteComponentProps) => {
         />
       </div>
       {avatarPreview && (
-        <img src={avatarPreview} alt="" className="preview-post-img" />
+        <div className="preview-post-img-cont">
+          <img src={avatarPreview} alt="" className="preview-post-img" />
+          <FaCheck className="check-icon-send-post" onClick={async ()=> {
+            let data = await sendRequestWithToken(
+              sendPost,
+              props,
+              newPost,
+              ""
+            );
+            if (data) window.location.reload();
+          }}/>
+        </div>
+        
       )}
     </div>
   );
