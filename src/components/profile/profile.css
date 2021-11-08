@@ -120,7 +120,7 @@ span.me-page-username {
   text-underline-offset: 4px;
 }
 
-.remove-friend-icon-profile {
+.add-friend-icon-profile{
   border: solid 1px #f7a072;
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -132,7 +132,7 @@ span.me-page-username {
   margin-top: 1rem;
 }
 
-.add-friend-icon-profile{
+ .remove-friend-icon-profile{
   border: solid 1px #f7a072;
   border-radius: 5px;
   padding: 0.5rem 1rem;
