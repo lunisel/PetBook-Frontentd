@@ -56,6 +56,7 @@ const SendPosts = (props: RouteComponentProps) => {
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setNewPost({
               content: {
+                ...newPost.content,
                 text: e.target.value,
               },
             });
