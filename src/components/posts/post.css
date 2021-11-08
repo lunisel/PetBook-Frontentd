@@ -245,10 +245,28 @@ input.input-send-post.form-control {
   background-color: rgba(119, 191, 166, 0.1);
 }
 
+.preview-post-img-cont{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
 .preview-post-img {
   width: 50%;
   height: auto;
   margin-bottom: 1rem;
+}
+
+.check-icon-send-post{
+  width: 2rem;
+  height: 2rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  background-color: #77bfa6;
+  color: white;
+  margin-left: 1rem;
+  cursor: pointer;
 }
 
 /* -------------------------------------------- MODAL CSS----------------------------------------- */
