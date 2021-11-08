@@ -9,6 +9,7 @@ import { sendRequestWithToken } from "../../utils/commonLogic";
 import { addCurrentUser } from "../../redux/actions/user";
 import { addFriends, removeFriends } from "../feed/feedLogic";
 import { RouteComponentProps } from "react-router";
+import { Link } from "react-router-dom";
 
 interface singleFriendInt {
   userId: string;
@@ -42,12 +43,23 @@ const SingleFriend = ({ userId, props }: singleFriendInt) => {
 
   useEffect(() => {
     fetchUser();
-  },[following]);
+  }, [following]);
   return (
     <>
       <img src={user?.avatar} alt="" className="friend-avatar" />
-      <div className="friend-username">@{user?.username}</div>
-      {user?._id === currentUser?._id ? "" : (filter ? (
+      <Link
+        to={
+          user?.username === currentUser?.username
+            ? `/me`
+            : `/profile/${user?.username}`
+        }
+        className="friend-username"
+      >
+        @{user?.username}
+      </Link>
+      {user?._id === currentUser?._id ? (
+        ""
+      ) : filter ? (
         <MdOutlinePersonAddDisabled
           className="remove-friend-icon-feed mr-3"
           style={{ height: "2.5rem", width: "2.5rem" }}
@@ -79,7 +91,7 @@ const SingleFriend = ({ userId, props }: singleFriendInt) => {
             }
           }}
         />
-      ))}
+      )}
     </>
   );
 };

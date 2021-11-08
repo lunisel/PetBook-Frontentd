@@ -402,10 +402,14 @@ img.owner-avatar-me-page{
   margin-right: 1rem;
 }
 
-.friend-username {
+a.friend-username {
   font-weight: 600;
   color: #303233;
   width: 100%;
+}
+
+a.friend-username:hover{
+  color: #303233e0;
 }
 
 /* -------------------------------------FRIENDS PROFILE CSS----------------------------- */
@@ -425,5 +429,14 @@ img.owner-avatar-me-page{
 
 .hero-profile {
   height: 50%;
+  background-color: #f0f0f2;
+}
+
+.friends-info-cont{
+  width: 100%;
+  padding: 1rem 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color: #f0f0f2;
 }

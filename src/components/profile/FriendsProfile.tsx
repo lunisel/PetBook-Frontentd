@@ -6,6 +6,7 @@ import Navbar from "../Navbar";
 import HeroSection from "./HeroSection";
 import MeFriends from "./MeFriends";
 import MePosts from "./MePosts";
+import FriendsInformation from "./FriendsInformation";
 import { fetchProfileFromUsername } from "./profileLogic";
 
 const FriendsProfile = (props: RouteComponentProps) => {
@@ -22,7 +23,7 @@ const FriendsProfile = (props: RouteComponentProps) => {
     friends: false,
     photos: false,
   });
-  
+
   let username = props.location.pathname;
   useEffect(() => {
     const fetchProfile = async () => {
@@ -30,7 +31,7 @@ const FriendsProfile = (props: RouteComponentProps) => {
       if (data) setUser(data);
     };
     fetchProfile();
-  }, []);
+  }, [username]);
 
   const dispatch = useDispatch();
 
@@ -55,13 +56,13 @@ const FriendsProfile = (props: RouteComponentProps) => {
               user={user}
             />
             {pages.posts && <MePosts user={user} routerProps={props} />}
-            {pages.friends && <MeFriends user={user} routerProps={props}/>}
+            {pages.friends && <MeFriends user={user} routerProps={props} />}
+            {pages.informations && (
+              <FriendsInformation user={user} routerProps={props} />
+            )}
           </>
         )}
       </div>
-
-      {/* {pages.informations && <MeInformation />}
-       */}
     </div>
   );
 };
