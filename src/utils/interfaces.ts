@@ -93,10 +93,10 @@ export interface postInt {
     text: string;
     img?: string;
   };
-  likes: Array<userInt>;
+  likes: Array<string> | undefined;
   comments: Array<commentsInt>;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface sendPostInt {

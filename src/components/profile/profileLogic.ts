@@ -132,3 +132,15 @@ export const getPostsFromSingleUser = async (userId : string | undefined) => {
     }
   }catch(err){console.log(err)}
 }
+
+export const getPhotosFromSingleUser = async (userId : string | undefined) => {
+  try{
+    let response = await fetch(
+      `${process.env.REACT_APP_BE_URL}/posts/${userId}/photos`
+    );
+    if(response.ok){
+      let data = await response.json()
+      return data
+    }
+  }catch(err){console.log(err)}
+}

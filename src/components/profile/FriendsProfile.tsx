@@ -8,6 +8,7 @@ import MeFriends from "./MeFriends";
 import MePosts from "./MePosts";
 import FriendsInformation from "./FriendsInformation";
 import { fetchProfileFromUsername } from "./profileLogic";
+import ProfilePhotos from "./ProfilePhotos";
 
 const FriendsProfile = (props: RouteComponentProps) => {
   const currentUser = useSelector(
@@ -60,6 +61,7 @@ const FriendsProfile = (props: RouteComponentProps) => {
             {pages.informations && (
               <FriendsInformation user={user} routerProps={props} />
             )}
+            {pages.photos && <ProfilePhotos user={user} routerProps={props} />}
           </>
         )}
       </div>

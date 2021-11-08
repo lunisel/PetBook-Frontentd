@@ -4,8 +4,9 @@ import { reduxStateInt, userInt } from "../../utils/interfaces";
 import Navbar from "../Navbar";
 import MePosts from "./MePosts";
 import MeInformation from "./MeInformation";
-import MeFriends from "./MeFriends"
-import { GoDeviceCamera, GoCheck } from "react-icons/go";
+import MeFriends from "./MeFriends";
+import ProfilePhotos from "./ProfilePhotos";
+import { GoDeviceCamera } from "react-icons/go";
 import "./profile.css";
 import { useEffect, useRef, useState } from "react";
 import { changeImg, handleSubmit } from "./profileLogic";
@@ -17,11 +18,11 @@ const MePage = (props: RouteComponentProps) => {
 
   const inputFile = useRef<any>(null);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const [imgHovered, setImgHovered] = useState(false)
-  const [avatarPreview, setPreview] = useState<string | null>(null)
-  const [updatedUser, setUpdatedUser] = useState<any>(null)
+  const [imgHovered, setImgHovered] = useState(false);
+  const [avatarPreview, setPreview] = useState<string | null>(null);
+  const [updatedUser, setUpdatedUser] = useState<any>(null);
 
   const [pages, setPages] = useState({
     posts: true,
@@ -30,34 +31,42 @@ const MePage = (props: RouteComponentProps) => {
     photos: false,
   });
 
-  const openFileDialog = () =>{
+  const openFileDialog = () => {
     inputFile.current.click();
-  }
+  };
 
-
-
-  useEffect(()=>{
+  useEffect(() => {
     const updateAvatar = async () => {
-      let data = await sendRequestWithToken(handleSubmit, props, updatedUser, "")
-      if(data){
-        dispatch(addCurrentUser(data))
-        window.location.reload()
+      let data = await sendRequestWithToken(
+        handleSubmit,
+        props,
+        updatedUser,
+        ""
+      );
+      if (data) {
+        dispatch(addCurrentUser(data));
+        window.location.reload();
       }
-    }
-    updateAvatar()
-  },[updatedUser !== null])
+    };
+    updateAvatar();
+  }, [updatedUser !== null]);
   return (
     <div className="me-page-big-cont">
       <div className="profile-container">
         <div className="hero-profile">
-          <div className="avatar-container" onClick={() => openFileDialog()} onMouseOver={()=> setImgHovered(true)} onMouseOut={()=> setImgHovered(false)}>
+          <div
+            className="avatar-container"
+            onClick={() => openFileDialog()}
+            onMouseOver={() => setImgHovered(true)}
+            onMouseOut={() => setImgHovered(false)}
+          >
             <input
               type="file"
               id="file"
               ref={inputFile}
               style={{ display: "none" }}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                changeImg(e, setPreview, setUpdatedUser, "avatar")
+                changeImg(e, setPreview, setUpdatedUser, "avatar");
               }}
             />
             <img
@@ -65,7 +74,7 @@ const MePage = (props: RouteComponentProps) => {
               alt="pet-avatar"
               className="avatar-me-page img-fluid"
             />
-            {imgHovered && <GoDeviceCamera className="camera-icon"/>}
+            {imgHovered && <GoDeviceCamera className="camera-icon" />}
           </div>
           <h4 className="me-page-name">{user?.petName}</h4>
           <span className="me-page-username">@{user?.username}</span>
@@ -130,9 +139,10 @@ const MePage = (props: RouteComponentProps) => {
             </span>
           </div>
         </div>
-        {pages.posts && <MePosts user={user} routerProps={props}/>}
+        {pages.posts && <MePosts user={user} routerProps={props} />}
         {pages.informations && <MeInformation />}
-        {pages.friends && <MeFriends user={user} routerProps={props}/>}
+        {pages.friends && <MeFriends user={user} routerProps={props} />}
+        {pages.photos && <ProfilePhotos user={user} routerProps={props} />}
       </div>
       <Navbar />
     </div>
