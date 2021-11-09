@@ -1,10 +1,10 @@
 import { RouteComponentProps } from "react-router-dom";
-import { infoMeInt, sendPostInt} from "./interfaces";
+import { infoMeInt, postPutNoteInt, sendPostInt} from "./interfaces";
 
 export const sendRequestWithToken = async (
   requestFuncion: any,
   props: RouteComponentProps,
-  functionProp: string | null | infoMeInt | sendPostInt,
+  functionProp: string | null | infoMeInt | sendPostInt | undefined ,
   secondFuncProp: string | null
   
 ) => {
