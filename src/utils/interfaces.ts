@@ -111,3 +111,20 @@ export interface sendRequestWithTokenPropsInt {
   props: RouteComponentProps;
   id?: string;
 }
+
+export interface getNoteInt {
+  _id: string,
+  user: string,
+  title: string,
+  text: string,
+  media: Array<string>,
+  createdAt: string,
+  updatedAt: string
+}
+
+export interface postPutNoteInt{
+  user?: string,
+  title?: string,
+  text?: string,
+  media?: Array<string>
+}

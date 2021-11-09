@@ -20,7 +20,7 @@
   z-index: 100;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1001px) {
   .top-logo-fixed-mobile {
     display: none;
   }
