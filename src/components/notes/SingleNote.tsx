@@ -1,17 +1,44 @@
 import { RouteComponentProps } from "react-router";
-import { FaTimesCircle, FaChevronCircleLeft, FaImage } from "react-icons/fa";
+import {
+  FaTimesCircle,
+  FaChevronCircleLeft,
+  FaImage,
+  FaAngleLeft,
+  FaAngleRight,
+  FaTrash,
+} from "react-icons/fa";
 import { getNoteInt, reduxStateInt } from "../../utils/interfaces";
 import Navbar from "../Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { addSelectedNote, removeSelectedNote } from "../../redux/actions/user";
 import { sendRequestWithToken } from "../../utils/commonLogic";
-import { deleteSingleNote, putSingleNote } from "./notesLogic";
+import { addImgToNote, deleteSingleNote, putSingleNote } from "./notesLogic";
+import { useRef, useState } from "react";
+import { Modal } from "react-bootstrap";
 
 const SingleNote = (props: RouteComponentProps) => {
+  const [show, setShow] = useState(false);
+  const [selectedImg, setSelectedImg] = useState<number | null>(null);
   const dispatch = useDispatch();
   const note: getNoteInt | null = useSelector(
     (state: reduxStateInt) => state.user.selectedNote
   );
+
+  const inputFile = useRef<any>(null);
+
+  const openFileDialog = () => {
+    inputFile.current.click();
+  };
+
+  const handleClose = () => {
+    setSelectedImg(null);
+    setShow(false);
+  };
+
+  const handleShow = (i: number) => {
+    setSelectedImg(i);
+    setShow(true);
+  };
 
   return (
     <div className="notes-big-cont">
@@ -48,6 +75,16 @@ const SingleNote = (props: RouteComponentProps) => {
           className="add-img-note-icon"
           data-toggle="tooltip"
           title="Add image"
+          onClick={() => openFileDialog()}
+        />
+        <input
+          type="file"
+          id="file"
+          ref={inputFile}
+          style={{ display: "none" }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            addImgToNote(e, dispatch, note);
+          }}
         />
 
         <div className="single-note">
@@ -70,9 +107,51 @@ const SingleNote = (props: RouteComponentProps) => {
               dispatch(addSelectedNote({ ...note, text: e.target.value }));
             }}
           />
-          {note?.media.map((i) => (
-            <img src={i} alt="" className="note-images" />
-          ))}
+          <div className="note-img-container">
+            {note?.media.map((img, i) => (
+              <img
+                src={img}
+                alt=""
+                className="note-images"
+                onClick={() => handleShow(i)}
+              />
+            ))}
+          </div>
+
+          <Modal
+            show={show}
+            onHide={handleClose}
+            className="big-modal-container"
+          >
+            <Modal.Header closeButton>
+              <FaTrash className="delete-img-modal" onClick={()=>{
+                  let img : string | undefined= note?.media[selectedImg!]
+                  let newMedia = note?.media.filter(n => n !== img)
+                  let updNote = {
+                      ...note,
+                      media: newMedia
+                  }
+                  dispatch(addSelectedNote(updNote))
+              }}/>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="note-modal-img-cont">
+                <FaAngleLeft
+                  className="img-arrow-icon left"
+                  onClick={() => setSelectedImg(selectedImg! - 1)}
+                />
+                <img
+                  src={note?.media[selectedImg!]}
+                  alt=""
+                  className="note-images-modal"
+                />
+                <FaAngleRight
+                  className="img-arrow-icon right"
+                  onClick={() => setSelectedImg(selectedImg! + 1)}
+                />
+              </div>
+            </Modal.Body>
+          </Modal>
         </div>
       </div>
       <Navbar />

@@ -179,6 +179,58 @@ textarea.single-note-text:focus-visible {
   outline: transparent
 }
 
+.note-img-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+img.note-images{
+  width: 20rem;
+  height: 15rem;
+  object-fit: cover;
+  margin: 0 0.5rem;
+}
+
+.note-modal-img-cont{
+  height: 100%;
+  width: 100%;
+  padding-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+img.note-images-modal{
+  height: 100%;
+  width: auto;
+}
+
+.img-arrow-icon{
+  color: #f0f0f2be;
+  width: 3rem;
+  height: 3rem;
+}
+
+.img-arrow-icon.left{
+  margin-left: 0.5rem;
+}
+
+.img-arrow-icon.right{
+  margin-right: 0.5rem;
+}
+
+.img-arrow-icon:hover{
+  color: #f0f0f2;
+  cursor: pointer;
+}
+
+.delete-img-modal{
+  color: #f7a072;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
 
 /* ---------------------------------QUERYS--------------------------------- */
 
