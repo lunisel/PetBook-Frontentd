@@ -1,16 +1,11 @@
 import { RouteComponentProps } from "react-router";
-import { IoChevronBackCircleSharp } from "react-icons/io5";
-import { FaTimesCircle } from "react-icons/fa";
-import {
-  getNoteInt,
-  postPutNoteInt,
-  reduxStateInt,
-} from "../../utils/interfaces";
+import { FaTimesCircle, FaChevronCircleLeft, FaImage } from "react-icons/fa";
+import { getNoteInt, reduxStateInt } from "../../utils/interfaces";
 import Navbar from "../Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { addSelectedNote, removeSelectedNote } from "../../redux/actions/user";
 import { sendRequestWithToken } from "../../utils/commonLogic";
-import { putSingleNote } from "./notesLogic";
+import { deleteSingleNote, putSingleNote } from "./notesLogic";
 
 const SingleNote = (props: RouteComponentProps) => {
   const dispatch = useDispatch();
@@ -21,7 +16,7 @@ const SingleNote = (props: RouteComponentProps) => {
   return (
     <div className="notes-big-cont">
       <div className="single-note-page-container">
-        <IoChevronBackCircleSharp
+        <FaChevronCircleLeft
           className="back-icon"
           data-toggle="tooltip"
           title="Back"
@@ -42,6 +37,17 @@ const SingleNote = (props: RouteComponentProps) => {
           className="delete-note-icon"
           data-toggle="tooltip"
           title="Delete"
+          onClick={async () => {
+            sendRequestWithToken(deleteSingleNote, props, note?._id, "");
+
+            props.history.push("/notes");
+            dispatch(removeSelectedNote());
+          }}
+        />
+        <FaImage
+          className="add-img-note-icon"
+          data-toggle="tooltip"
+          title="Add image"
         />
 
         <div className="single-note">
@@ -55,15 +61,18 @@ const SingleNote = (props: RouteComponentProps) => {
             }}
           />
 
-          <input
-            type="text"
+          <textarea
             className="single-note-text"
             placeholder="Write something..."
+            rows={12}
             defaultValue={note?.text}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
               dispatch(addSelectedNote({ ...note, text: e.target.value }));
             }}
           />
+          {note?.media.map((i) => (
+            <img src={i} alt="" className="note-images" />
+          ))}
         </div>
       </div>
       <Navbar />

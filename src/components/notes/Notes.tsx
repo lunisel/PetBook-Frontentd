@@ -24,7 +24,7 @@ const Notes = (props: RouteComponentProps) => {
   const currentUser = useSelector(
     (state: reduxStateInt) => state.user.currentUser
   );
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const userId = currentUser?._id;
 
   useEffect(() => {
@@ -38,10 +38,9 @@ const Notes = (props: RouteComponentProps) => {
       );
       if (data) {
         setAllNotes(data);
-        if(allNotes !== null){
+        if (allNotes !== null) {
           console.log(allNotes);
         }
-        
       }
     };
     setMyNotes();
@@ -49,18 +48,28 @@ const Notes = (props: RouteComponentProps) => {
 
   return (
     <div className="notes-big-cont">
-        <div className="notes-page-content-container">
-          <div className="top-logo-fixed-mobile">
-            <FaPaw className="top-logo-fixed-icon" />
-            <span className="title-top-logo-fixed">PetBook</span>
-          </div>
-          <h1 className="notes-title">Your Notes</h1>
-          <Row className="single-notes-container">
-            {allNotes?.map((n) => 
-              <Col xs={12} md={4} lg={2} className="single-note-cont" onClick={()=> {
-                props.history.push("/notes/" + n._id)
-                dispatch(addSelectedNote(n))
-              }}>
+      <div className="notes-page-content-container">
+        <div className="top-logo-fixed-mobile">
+          <FaPaw className="top-logo-fixed-icon" />
+          <span className="title-top-logo-fixed">PetBook</span>
+        </div>
+        <h1 className="notes-title">Your Notes</h1>
+        <Row className="single-notes-container">
+          {allNotes
+            ?.sort(function (a: any, b: any) {
+              return +new Date(b.createdAt) - +new Date(a.createdAt);
+            })
+            .map((n) => (
+              <Col
+                xs={12}
+                md={4}
+                lg={2}
+                className="single-note-cont"
+                onClick={() => {
+                  props.history.push("/notes/" + n._id);
+                  dispatch(addSelectedNote(n));
+                }}
+              >
                 <div className="note-container">
                   <span className="note-title">{n.title}</span>
                   <span className="note-text">{n.text}</span>
@@ -68,29 +77,29 @@ const Notes = (props: RouteComponentProps) => {
                   {console.log("render single note", allNotes)}
                 </div>
               </Col>
-            )}
-            <Col xs={12} md={4} lg={2} className="add-new-note-container">
-              <div
-                className="single-add-note"
-                onClick={async () => {
-                  let data = await sendRequestWithToken(
-                    addNewNote,
-                    props,
-                    userId,
-                    ""
-                  );
-                  if (data) {
-                    dispatch(addSelectedNote(data))
-                    props.history.push("/notes/" + data._id)
-                  }
-                }}
-              >
-                <HiPlusCircle className="plus-circle-icon" />
-                <span className="add-note-text">Add note</span>
-              </div>
-            </Col>
-          </Row>
-        </div>
+            ))}
+          <Col xs={12} md={4} lg={2} className="add-new-note-container">
+            <div
+              className="single-add-note"
+              onClick={async () => {
+                let data = await sendRequestWithToken(
+                  addNewNote,
+                  props,
+                  userId,
+                  ""
+                );
+                if (data) {
+                  dispatch(addSelectedNote(data));
+                  props.history.push("/notes/" + data._id);
+                }
+              }}
+            >
+              <HiPlusCircle className="plus-circle-icon" />
+              <span className="add-note-text">Add note</span>
+            </div>
+          </Col>
+        </Row>
+      </div>
       <Navbar />
     </div>
   );

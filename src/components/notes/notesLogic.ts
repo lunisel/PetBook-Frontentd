@@ -47,3 +47,17 @@ export const putSingleNote = async (noteChange : postPutNoteInt, noteId: string)
     console.log(err);
   }
 }
+
+export const deleteSingleNote = async (noteId: string) => {
+  try {
+    let response =  await fetch(`${process.env.REACT_APP_BE_URL}/notes/${noteId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      }
+    });
+    return response
+  } catch (err) {
+    console.log(err);
+  }
+}
