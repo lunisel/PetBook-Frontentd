@@ -4,7 +4,7 @@ import { infoMeInt, postPutNoteInt, sendPostInt} from "./interfaces";
 export const sendRequestWithToken = async (
   requestFuncion: any,
   props: RouteComponentProps,
-  functionProp: string | null | infoMeInt | sendPostInt | undefined ,
+  functionProp: string | null | infoMeInt | sendPostInt | undefined | postPutNoteInt ,
   secondFuncProp: string | null
   
 ) => {

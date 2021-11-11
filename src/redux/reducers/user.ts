@@ -12,11 +12,21 @@ const userReducer = (
         ...state,
         currentUser: action.payload,
       };
-      case "DISCONNECT_USER":
-        return{
-          ...state,
-          currentUser: null
-        }
+    case "DISCONNECT_USER":
+      return {
+        ...state,
+        currentUser: null,
+      };
+    case "ADD_SELECTED_NOTE":
+      return {
+        ...state,
+        selectedNote: action.payload,
+      };
+    case "REMOVE_SELECTED_NOTE":
+      return {
+        ...state,
+        selectedNote: null,
+      };
     default:
       return state;
   }

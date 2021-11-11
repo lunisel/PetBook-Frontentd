@@ -50,6 +50,7 @@ export interface userInt {
 export interface reduxStateInt {
   user: {
     currentUser: userInt | null;
+    selectedNote: null | getNoteInt
   };
   posts: {
     selectedPost: postInt | null;

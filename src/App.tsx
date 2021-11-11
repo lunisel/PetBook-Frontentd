@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { reduxStateInt, userInt } from "./utils/interfaces";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FriendsProfile from "./components/profile/FriendsProfile";
+import SingleNote from "./components/notes/SingleNote";
 
 function App() {
   const user: userInt | null = useSelector(
@@ -117,6 +118,20 @@ function App() {
             <Redirect to="/login" />
           )}
         </Route>
+
+        <Route path="/notes/:noteId">
+          {user ? (
+            <Route
+              path="/notes/:noteId"
+              render={(routerProps: RouteComponentProps) => (
+                <SingleNote {...routerProps} />
+              )}
+            />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+
       </BrowserRouter>
     </div>
   );

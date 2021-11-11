@@ -28,6 +28,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 export const initialState: reduxStateInt = {
   user: {
     currentUser: null,
+    selectedNote: null
   },
   posts: {
     selectedPost: null,
