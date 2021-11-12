@@ -74,7 +74,13 @@ const Notes = (props: RouteComponentProps) => {
                   <span className="note-title">{n.title}</span>
                   <span className="note-text">{n.text}</span>
                   <span className="note-time">{getTime(n.createdAt)}</span>
-                  {console.log("render single note", allNotes)}
+                  {n.media.length > 0 && (
+                    <img
+                      src={n.media[0]}
+                      alt=""
+                      className="background-img-note"
+                    />
+                  )}
                 </div>
               </Col>
             ))}

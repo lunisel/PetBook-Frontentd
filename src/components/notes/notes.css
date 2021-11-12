@@ -18,7 +18,7 @@ h1.notes-title {
   font-weight: 800;
   color: #30323310;
   -webkit-text-stroke: 0.1vw #3032334d;
-  text-shadow: 2px 2px 3px #30323320;
+  text-shadow: 2px 2px 3px #30323310;
 }
 
 .single-notes-container.row {
@@ -50,7 +50,7 @@ h1.notes-title {
   border-radius: 50%;
 }
 
-.note-container{
+.note-container {
   background-color: white;
   border-radius: 10px;
   height: 30vh;
@@ -69,26 +69,39 @@ h1.notes-title {
   margin: 0.5rem 0;
 }
 
-.note-title{
+.note-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #303233a0;
+  color: #303233;
   margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 90%;
+  z-index: 5;
 }
 
-.note-text{
+.note-text {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #30323390;
+  color: #303233a0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 90%;
+  z-index: 5;
 }
 
-.note-time{
-position: absolute;
-top: 0.5rem;
-right: 0.5rem;
-font-size: 0.8rem;
-font-weight: 700;
-color: #30323350;
+.note-time {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #30323380;
+  z-index: 5;
 }
 
 .plus-circle-icon:hover {
@@ -100,6 +113,15 @@ color: #30323350;
   font-weight: 800;
   color: #c0c0c0;
   margin-top: 0.5rem;
+}
+
+img.background-img-note {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  filter: opacity(40%);
 }
 
 /* --------------------------------SINGLE NOTE---------------------- */
@@ -126,10 +148,10 @@ input.single-note-title {
 }
 
 input.single-note-title:focus-visible {
-  outline: transparent
+  outline: transparent;
 }
 
-.back-icon{
+.back-icon {
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 50%;
@@ -141,7 +163,7 @@ input.single-note-title:focus-visible {
   cursor: pointer;
 }
 
-.delete-note-icon{
+.delete-note-icon {
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 50%;
@@ -153,7 +175,7 @@ input.single-note-title:focus-visible {
   background-color: #ffffffa0;
 }
 
-.add-img-note-icon{
+.add-img-note-icon {
   width: 3rem;
   height: 3rem;
   position: absolute;
@@ -166,7 +188,7 @@ input.single-note-title:focus-visible {
   border: solid 1px #30323310;
 }
 
-textarea.single-note-text{
+textarea.single-note-text {
   background-color: transparent;
   border: transparent solid 1px;
   width: 100%;
@@ -176,23 +198,23 @@ textarea.single-note-text{
 }
 
 textarea.single-note-text:focus-visible {
-  outline: transparent
+  outline: transparent;
 }
 
-.note-img-container{
+.note-img-container {
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-img.note-images{
+img.note-images {
   width: 20rem;
   height: 15rem;
   object-fit: cover;
   margin: 0 0.5rem;
 }
 
-.note-modal-img-cont{
+.note-modal-img-cont {
   height: 100%;
   width: 100%;
   padding-top: 3rem;
@@ -201,36 +223,35 @@ img.note-images{
   justify-content: space-between;
 }
 
-img.note-images-modal{
+img.note-images-modal {
   height: 100%;
   width: auto;
 }
 
-.img-arrow-icon{
+.img-arrow-icon {
   color: #f0f0f2be;
   width: 3rem;
   height: 3rem;
 }
 
-.img-arrow-icon.left{
+.img-arrow-icon.left {
   margin-left: 0.5rem;
 }
 
-.img-arrow-icon.right{
+.img-arrow-icon.right {
   margin-right: 0.5rem;
 }
 
-.img-arrow-icon:hover{
+.img-arrow-icon:hover {
   color: #f0f0f2;
   cursor: pointer;
 }
 
-.delete-img-modal{
+.delete-img-modal {
   color: #f7a072;
   cursor: pointer;
   margin-left: 1rem;
 }
-
 
 /* ---------------------------------QUERYS--------------------------------- */
 
