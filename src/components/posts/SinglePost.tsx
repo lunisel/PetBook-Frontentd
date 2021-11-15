@@ -2,7 +2,6 @@ import { reduxStateInt } from "../../utils/interfaces";
 import { BsThreeDotsVertical, BsAspectRatio } from "react-icons/bs";
 import { VscTrash, VscEdit } from "react-icons/vsc";
 import { FaRegThumbsUp, FaRegComment } from "react-icons/fa";
-import "./post.css";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from "react";
 import {
@@ -18,6 +17,7 @@ import { sendRequestWithToken } from "../../utils/commonLogic";
 import { Link } from "react-router-dom";
 import SinglePostComments from "./SinglePostComments";
 import { addSelectedPost, deleteSelectedPost } from "../../redux/actions/post";
+import "./post.css";
 
 const SinglePost = ({ post }: any, props: RouteComponentProps) => {
   const currentUser = useSelector(
