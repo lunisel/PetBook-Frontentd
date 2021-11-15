@@ -11,7 +11,7 @@ const FormLogin = ({ history }: RouteComponentProps) => {
   const [login, setLogin] = useState<logInInt>({
     email: "",
     password: "",
-    stayConnected: false
+    stayConnected: true
   });
 
   const [validated, setValidation] = useState<boolean>(false);
