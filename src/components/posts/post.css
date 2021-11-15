@@ -127,7 +127,7 @@ img.img-post {
 img.img-post:hover {
   cursor: pointer;
   filter: brightness(70%);
-  opacity: 95%;
+  opacity: 0.95;
 }
 
 .open-img-post-icon {
