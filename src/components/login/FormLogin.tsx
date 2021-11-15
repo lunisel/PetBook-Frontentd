@@ -69,6 +69,7 @@ const FormLogin = ({ history }: RouteComponentProps) => {
       <div className="remember-me-cont">
         <Form.Check
           type="checkbox"
+          checked
           label="Remember me"
           className="remember-me"
           onChange={()=> setLogin({
