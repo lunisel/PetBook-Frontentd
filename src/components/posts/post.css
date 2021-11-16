@@ -293,8 +293,8 @@ input.input-send-post.form-control {
 
 .modal-dialog {
   margin: 0 !important;
-  width: 90% !important;
-  height: 90%;
+  width: 70vw !important;
+  height: 90vh;
   position: relative;
 }
 
@@ -388,9 +388,59 @@ img.img-modal-big {
   padding: 0.5rem;
 }
 
+@media (max-width: 1000px) {
+  .modal-dialog {
+    width: 98vw !important;
+    height: 95vh !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .modal-body {
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .img-modal-cont{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 3.2rem;
+    padding-bottom: 0.3rem;
+  }
+  img.img-modal-big{
+    height: 100%;
+    width: auto;
+  }
+
+  .modal-post-container{
+    width: 100%;
+    height: 50%;
+    overflow: scroll;
+    padding-top: 1rem;
+  }
+  
+}
+
+@media (max-width: 450px) {
+  .modal-post-container{
+    padding: 1rem;
+
+  }
+}
+
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 70vw !important;
+    max-width: 95vw !important;
+    height: 95vh !important;
     margin: 0 !important;
   }
 }
@@ -441,7 +491,7 @@ img.comment-user-avatar {
 .comment-time {
   font-size: 0.7rem;
   color: #303233e0;
-  align-items: flex-start;
+ align-items: flex-end;
 }
 
 .comment-icon-container {
