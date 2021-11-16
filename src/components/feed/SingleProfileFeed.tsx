@@ -30,7 +30,7 @@ const SingleProfileFeed = (componentProp: any, props: RouteComponentProps) => {
         <img
           src={user.avatar}
           alt="pet-avatar"
-          className="searched-user-avatar img-fluid"
+          className="searched-user-avatar"
         />
       </div>
       <div className="user-name-cont">
