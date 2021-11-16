@@ -453,7 +453,7 @@ a.friend-username:hover {
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    padding-bottom: 3rem;
+    padding-bottom: 3rem !important;
   }
 
   .following-followers-cont {
