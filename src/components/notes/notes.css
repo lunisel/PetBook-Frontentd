@@ -225,6 +225,13 @@ img.note-images-modal {
   width: auto;
 }
 
+@media (max-width: 600px) {
+  img.note-images-modal {
+    height: auto !important;
+    width: 90% !important;
+  }
+}
+
 .img-arrow-icon {
   color: #f0f0f2be;
   width: 3rem;
@@ -281,12 +288,12 @@ img.note-images-modal {
     left: 2rem;
   }
 
-  .delete-note-icon{
+  .delete-note-icon {
     top: 1rem;
     right: 2rem;
   }
 
-  .add-img-note-icon{
+  .add-img-note-icon {
     top: 1rem;
     right: 5rem;
   }
@@ -307,7 +314,7 @@ img.note-images-modal {
     font-size: 1.8rem;
   }
 
-  textarea.single-note-text{
+  textarea.single-note-text {
     font-size: 1.3rem;
   }
 }
