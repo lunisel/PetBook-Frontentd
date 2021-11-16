@@ -225,6 +225,13 @@ img.note-images-modal {
   width: auto;
 }
 
+@media (max-width: 1500px) {
+  img.note-images-modal {
+    height: auto !important;
+    width: 90% !important;
+  }
+}
+
 @media (max-width: 600px) {
   img.note-images-modal {
     height: auto !important;
