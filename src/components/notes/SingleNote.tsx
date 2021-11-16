@@ -124,21 +124,26 @@ const SingleNote = (props: RouteComponentProps) => {
             className="big-modal-container"
           >
             <Modal.Header closeButton>
-              <FaTrash className="delete-img-modal" onClick={()=>{
-                  let img : string | undefined= note?.media[selectedImg!]
-                  let newMedia = note?.media.filter(n => n !== img)
+              <FaTrash
+                className="delete-img-modal"
+                onClick={() => {
+                  let img: string | undefined = note?.media[selectedImg!];
+                  let newMedia = note?.media.filter((n) => n !== img);
                   let updNote = {
-                      ...note,
-                      media: newMedia
-                  }
-                  dispatch(addSelectedNote(updNote))
-              }}/>
+                    ...note,
+                    media: newMedia,
+                  };
+                  dispatch(addSelectedNote(updNote));
+                }}
+              />
             </Modal.Header>
             <Modal.Body>
               <div className="note-modal-img-cont">
                 <FaAngleLeft
                   className="img-arrow-icon left"
-                  onClick={() => setSelectedImg(selectedImg! - 1)}
+                  onClick={() =>
+                    setSelectedImg(selectedImg! === 0 ? 0 : selectedImg! - 1)
+                  }
                 />
                 <img
                   src={note?.media[selectedImg!]}
@@ -147,7 +152,13 @@ const SingleNote = (props: RouteComponentProps) => {
                 />
                 <FaAngleRight
                   className="img-arrow-icon right"
-                  onClick={() => setSelectedImg(selectedImg! + 1)}
+                  onClick={() => {
+                    setSelectedImg(
+                      selectedImg! + 1 === note?.media.length
+                        ? selectedImg!
+                        : selectedImg! + 1
+                    );
+                  }}
                 />
               </div>
             </Modal.Body>
