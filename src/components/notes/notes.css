@@ -74,10 +74,7 @@ h1.notes-title {
   font-weight: 600;
   color: #303233;
   margin-bottom: 1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+
   width: 90%;
   z-index: 5;
 }
@@ -261,6 +258,10 @@ img.note-images-modal {
     padding-bottom: 3rem;
   }
 
+  .single-note-page-container {
+    padding: 2rem;
+  }
+
   .notes-page-content-container {
     padding: 4rem 3rem;
   }
@@ -275,7 +276,38 @@ img.note-images-modal {
     text-shadow: 2px 2px 3px #30323320;
   }
 
+  .back-icon {
+    top: 1rem;
+    left: 2rem;
+  }
+
+  .delete-note-icon{
+    top: 1rem;
+    right: 2rem;
+  }
+
+  .add-img-note-icon{
+    top: 1rem;
+    right: 5rem;
+  }
+
   .notes-page-content-container {
     padding: 4rem 1rem 1rem 1rem;
+  }
+
+  .single-note-page-container {
+    padding: 2rem 1rem;
+  }
+
+  .single-note {
+    padding: 2rem 1rem;
+  }
+
+  input.single-note-title {
+    font-size: 1.8rem;
+  }
+
+  textarea.single-note-text{
+    font-size: 1.3rem;
   }
 }

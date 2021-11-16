@@ -9,6 +9,7 @@
 .profile-container {
   width: 100%;
   height: 100vh;
+  position: relative;
 }
 
 /* -------------------------------HERO SECTION------------------------------- */
@@ -120,7 +121,7 @@ span.me-page-username {
   text-underline-offset: 4px;
 }
 
-.add-friend-icon-profile{
+.add-friend-icon-profile {
   border: solid 1px #f7a072;
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -132,7 +133,7 @@ span.me-page-username {
   margin-top: 1rem;
 }
 
- .remove-friend-icon-profile{
+.remove-friend-icon-profile {
   border: solid 1px #f7a072;
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -366,8 +367,8 @@ img.owner-avatar-me-page {
     padding: 0.5rem 10%;
     justify-content: space-around;
     align-items: center;
-    background-color: #f0f0f2;
-    padding-bottom: 3.5rem;
+    background-color: white;
+    padding-bottom: 1rem !important;
     position: relative;
   }
 
@@ -396,6 +397,7 @@ img.owner-avatar-me-page {
   .form-container-home {
     width: 100%;
     margin-bottom: 0;
+    padding: 0.5rem !important;
   }
 }
 
@@ -403,7 +405,6 @@ img.owner-avatar-me-page {
 
 .friends-cont-big {
   width: 100%;
-  height: fit-content;
   background-color: #f0f0f2;
   padding: 1rem 8rem;
   display: flex;
@@ -445,6 +446,50 @@ a.friend-username:hover {
   color: #303233e0;
 }
 
+@media screen and (max-width: 600px) {
+  .friends-cont-big {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  .following-followers-cont {
+    width: 100%;
+  }
+
+  .following-content-container,
+  .followers-content-container {
+    width: 100%;
+  }
+
+  a.friend-username {
+    width: 70%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .friends-cont-big {
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+  }
+
+  a.friend-username {
+    width: 70%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
 /* -------------------------------------FRIENDS PROFILE CSS----------------------------- */
 
 .big-friend-profile-container {
@@ -471,6 +516,29 @@ a.friend-username:hover {
 
 .profile-photos-container {
   padding: 1rem 10rem;
+  background-color: #f0f0f2;
+}
+
+@media (max-width: 600px) {
+  .profile-photos-container {
+    padding: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  .profile-photos-container .row{
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .profile-photos-container {
+    padding: 1rem 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .profile-photos-container .row{
+    margin: 0 !important;
+  }
 }
 
 .profile-photos-img-container.col-lg-3.col-md-4.col-12 {

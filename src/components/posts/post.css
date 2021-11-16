@@ -22,8 +22,8 @@
 }
 
 .post-avatar {
-  height: 100%;
-  width: 100%;
+  width: 3rem;
+  height: 3rem;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -130,6 +130,15 @@ img.img-post:hover {
   opacity: 0.95;
 }
 
+@media (max-width: 600px) {
+  .send-post-img-cont{
+    margin-right: 0.5rem !important;
+  }
+  .add-pic-icon{
+    margin-left: 0.5rem !important;
+  }
+}
+
 .open-img-post-icon {
   position: absolute;
   color: #f0f0f2de;
@@ -214,13 +223,13 @@ img.img-post:hover {
 
 .send-post-img-cont {
   height: 3.5rem;
-  width: 4rem;
+  width: 3.5rem;
   margin-right: 1rem;
 }
 
 img.img-profile {
-  height: 100%;
-  width: 100%;
+  height: 3.5rem;
+  width: 3.5rem;
   object-fit: cover;
   border-radius: 50%;
   background-color: #f0f0f2;
@@ -230,6 +239,8 @@ img.img-profile {
 input.input-send-post.form-control {
   border-radius: 50vh;
 }
+
+
 
 .add-pic-icon {
   width: 3.5rem;
