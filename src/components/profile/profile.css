@@ -338,7 +338,7 @@ img.owner-avatar-me-page {
 
   /* --------------------------------ME PAGE INFO QUERY--------------------------- */
 
-  .me-information-container {
+  .me-information-container, .friends-info-cont {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -346,7 +346,7 @@ img.owner-avatar-me-page {
     justify-content: space-around;
     align-items: center;
     background-color: #f0f0f2;
-    padding-bottom: 3.5rem;
+    padding-bottom: 3.5rem !important;
   }
 
   .me-pet-info-container {
