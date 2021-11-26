@@ -4,13 +4,13 @@ This is my final Capstone project of the Strive School Full-Stack web developmen
 
 ## Technologies
 Front-end
-*React
-*Typescript
-*Redux
+* React
+* Typescript
+* Redux
 
 Back-end
-*Node.js
-*Express
+* Node.js
+* Express
 
 ## Launch
 This app can be found in https://pet-book-frontentd.vercel.app/. Hope you enjoy it 😄.
